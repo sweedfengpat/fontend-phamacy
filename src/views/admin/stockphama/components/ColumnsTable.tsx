@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CardMenu from "components/card/CardMenu";
 import Card from "components/card";
+import { ExclamationCircleFilled } from '@ant-design/icons';
 
 import {
   createColumnHelper,
@@ -10,23 +11,83 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
+import { baseURL, baseURLstatic } from "lib/url";
+import axios from "axios";
+import { Modal, notification } from "antd";
 
 type RowObj = {
-  name: [string, boolean];
-  progress: string;
-  quantity: number;
-  date: string;
+  id: number;
+  productCode: string;
+  productName: string;
+  productPrice: string;
+  productAmount: string;
+  productImage: string;
+  productType: string;
 };
 
 function ColumnsTable(props: { tableData: any }) {
   const { tableData } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
+
+  console.log("tableData",tableData);
+
+  const { confirm } = Modal;
+
+  const deleteProduct2 = (id: number) => {
+    confirm({
+      title: 'คุณต้องการลบใช่ไหม',
+      icon: <ExclamationCircleFilled />,
+      content: 'เมื่อลบแล้วจะไม่สามารถกู้คืนได้',
+      onOk() {
+        const formData = new FormData();
+        formData.append('id', id.toString());
+        axios.post(`${baseURL}/delete-product`, formData).then((response: any) => {
+          console.log(response.data);
+          window.location.reload();
+        });
+      },
+      onCancel() {},
+    });
+  };
+
+  const deleteProduct = (id: number) => {
+    
+    const formData = new FormData();
+    formData.append('id', id.toString());
+    axios.post(`${baseURL}/delete-product`, formData).then((response: any) => {
+      console.log(response.data);
+      window.location.reload();
+    });
+  };
+
   let defaultData = tableData;
   const columns = [
-    columnHelper.accessor("name", {
-      id: "name",
+    columnHelper.accessor("id", {
+      id: "id",
       header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">NAME</p>
+        <p className="text-sm font-bold text-gray-600 dark:text-white">id</p>
+      ),
+      //cell is index +1 
+      cell: (info: any) => (
+        <p className="text-sm font-bold text-navy-700 dark:text-white">
+          {info.getValue()}
+        </p>
+      ),
+    }),
+    columnHelper.accessor("productImage", {
+      id: "productImage",
+      header: () => (
+        <p className="text-sm font-bold text-gray-600 dark:text-white">id</p>
+      ),
+      //cell is index +1 
+      cell: (info: any) => (
+        <img className="h-20 w-20 rounded-full border-gray-200 border transform hover:scale-125 transition duration-300 ease-in-out" src={baseURLstatic+"/"+info.getValue()} alt="" />
+      ),
+    }),
+    columnHelper.accessor("productCode", {
+      id: "productCode",
+      header: () => (
+        <p className="text-sm font-bold text-gray-600 dark:text-white">รหัสสินค้ายา</p>
       ),
       cell: (info: any) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
@@ -34,11 +95,11 @@ function ColumnsTable(props: { tableData: any }) {
         </p>
       ),
     }),
-    columnHelper.accessor("progress", {
-      id: "progress",
+    columnHelper.accessor("productName", {
+      id: "name",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">
-          PROGRESS
+          ชื่อสินค้า
         </p>
       ),
       cell: (info) => (
@@ -47,11 +108,11 @@ function ColumnsTable(props: { tableData: any }) {
         </p>
       ),
     }),
-    columnHelper.accessor("quantity", {
+    columnHelper.accessor("productPrice", {
       id: "quantity",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">
-          QUANTITY
+          	ราคา
         </p>
       ),
       cell: (info) => (
@@ -60,19 +121,49 @@ function ColumnsTable(props: { tableData: any }) {
         </p>
       ),
     }),
-    columnHelper.accessor("date", {
+    columnHelper.accessor("productAmount", {
       id: "date",
       header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">DATE</p>
+        <p className="text-sm font-bold text-gray-600 dark:text-white">จำนวน</p>
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
           {info.getValue()}
         </p>
+      ),
+    }),
+    columnHelper.accessor("id", {
+      id: "edit",
+      header: () => (
+        <p className="text-sm font-bold text-gray-600 dark:text-white">แก้ไข</p>
+      ),
+      cell: (info) => (
+          <button className="linear mt-2 px-5 rounded-xl bg-brand-500 py-1 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
+          onClick={e => {
+
+          }}
+          >
+          แก้ไข
+          </button>
+      ),
+    }),
+    columnHelper.accessor("id", {
+      id: "delete",
+      header: () => (
+        <p className="text-sm font-bold text-gray-600 dark:text-white">ลบ</p>
+      ),
+      cell: (info) => (
+        <button className="linear mt-2 px-5  rounded-xl bg-red-200 py-1 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-red-400 dark:text-white dark:hover:bg-pink-300 dark:active:bg-brand-200"
+        onClick={e => {
+          deleteProduct2(info.getValue());
+        }}
+        >
+        ลบ
+        </button>
       ),
     }),
   ]; // eslint-disable-next-line
-  const [data, setData] = React.useState(() => [...defaultData]);
+  const [data, setData] = React.useState(defaultData);
   const table = useReactTable({
     data,
     columns,
@@ -84,11 +175,17 @@ function ColumnsTable(props: { tableData: any }) {
     getSortedRowModel: getSortedRowModel(),
     debugTable: true,
   });
+
+  useEffect(() => {
+    setData(defaultData);
+  }, [defaultData]);
+
+  console.log("data",data);
   return (
     <Card extra={"w-full pb-10 p-4 h-full"}>
       <header className="relative flex items-center justify-between">
         <div className="text-xl font-bold text-navy-700 dark:text-white">
-          4-Columns Table
+          รายการคลังยา
         </div>
         <CardMenu />
       </header>
@@ -125,7 +222,7 @@ function ColumnsTable(props: { tableData: any }) {
           <tbody>
             {table
               .getRowModel()
-              .rows.slice(0, 5)
+              .rows
               .map((row) => {
                 return (
                   <tr key={row.id}>
@@ -148,6 +245,8 @@ function ColumnsTable(props: { tableData: any }) {
           </tbody>
         </table>
       </div>
+      {/* 123 */}
+      <div ></div>
     </Card>
   );
 }

@@ -1,13 +1,33 @@
-import tableDataDevelopment from "./variables/tableDataDevelopment";
-import tableDataCheck from "./variables/tableDataCheck";
-import CheckTable from "./components/CheckTable";
-import tableDataColumns from "./variables/tableDataColumns";
-import tableDataComplex from "./variables/tableDataComplex";
-import DevelopmentTable from "./components/DevelopmentTable";
 import ColumnsTable from "./components/ColumnsTable";
-import ComplexTable from "./components/ComplexTable";
+import { useEffect } from "react";
+import React from "react";
+import { baseURL } from "lib/url";
+import axios from "axios";
+
+interface DataTable {
+  id: number;
+  productCode: string;
+  productName: string;
+  productPrice: string;
+  productAmount: string;
+  productImage: string;
+  productType: string;
+}
 
 const Tables = () => {
+  const [tableDataColumns, setTableDataColumns] = React.useState<DataTable[]>([]);
+  useEffect(() => {
+    if (tableDataColumns.length === 0) {
+      const formData = new FormData();
+      formData.append('id', "1");
+      axios.post(`${baseURL}/all-product`, formData).then((response: any) => {
+        let new_rows: any = [];
+        let data = JSON.parse(response.data);
+        console.log("data",data);
+        setTableDataColumns(data);
+      });
+    }
+  }, []);
   return (
     <div>
 
