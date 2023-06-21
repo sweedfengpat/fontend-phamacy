@@ -16,6 +16,7 @@ interface DataTable {
 
 const Tables = () => {
   const [tableDataColumns, setTableDataColumns] = React.useState<DataTable[]>([]);
+  const [page , setPage] = React.useState<number>(1);
   useEffect(() => {
     if (tableDataColumns.length === 0) {
       const formData = new FormData();

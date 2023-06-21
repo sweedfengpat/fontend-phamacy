@@ -50,15 +50,10 @@ function ColumnsTable(props: { tableData: any }) {
     });
   };
 
-  const deleteProduct = (id: number) => {
-    
-    const formData = new FormData();
-    formData.append('id', id.toString());
-    axios.post(`${baseURL}/delete-product`, formData).then((response: any) => {
-      console.log(response.data);
-      window.location.reload();
-    });
-  };
+  const EditProduct = (id: number) => {
+    window.location.href = "/admin/product?id="+id;
+  }
+
 
   let defaultData = tableData;
   const columns = [
@@ -140,7 +135,7 @@ function ColumnsTable(props: { tableData: any }) {
       cell: (info) => (
           <button className="linear mt-2 px-5 rounded-xl bg-brand-500 py-1 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
           onClick={e => {
-
+            EditProduct(info.getValue())
           }}
           >
           แก้ไข

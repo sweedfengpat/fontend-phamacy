@@ -10,6 +10,7 @@ import Finace from "views/admin/finace";
 import Sell from "views/admin/sell";
 import Selllist from "views/admin/selllist";
 import Stockphama from "views/admin/stockphama";
+import Product from "views/admin/product";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -30,6 +31,13 @@ const routes = [
     path: "default",
     icon: <MdHome className="h-6 w-6" />,
     component: <MainDashboard />,
+  },
+  {
+    name: "คลังยา",
+    layout: "/admin",
+    path: "product",
+    icon: <MdHome className="h-6 w-6" />,
+    component: <Product />,
   },
   // {
   //   name: "NFT Marketplace",
