@@ -16,6 +16,8 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
   };
 
   const createLinks = (routes: RoutesType[]) => {
+    //remove sing-in 
+    routes = routes.filter((route) => route.name !== "Sign In");
     return routes.map((route, index) => {
       if (
         route.layout === "/admin" ||

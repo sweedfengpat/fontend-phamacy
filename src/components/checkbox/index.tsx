@@ -16,6 +16,8 @@ const Checkbox = (props: {
     | "indigo"
     | "gray";
   [x: string]: any;
+  function?: any;
+  value?: any;
 }) => {
   const { extra, color, ...rest } = props;
   return (
@@ -56,6 +58,12 @@ const Checkbox = (props: {
       } ${extra}`}
       name="weekly"
       {...rest}
+      onChange={(e) => {
+        if (props.function) {
+          props.function(e.target.checked);
+        }
+      }}
+      value={props.value}
     />
   );
 };
