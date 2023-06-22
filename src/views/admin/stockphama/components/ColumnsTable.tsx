@@ -14,6 +14,7 @@ import {
 import { baseURL, baseURLstatic } from "lib/url";
 import axios from "axios";
 import { Modal, notification } from "antd";
+import Link from "antd/es/typography/Link";
 
 type RowObj = {
   id: number;
@@ -182,7 +183,17 @@ function ColumnsTable(props: { tableData: any }) {
         <div className="text-xl font-bold text-navy-700 dark:text-white">
           รายการคลังยา
         </div>
-        <CardMenu />
+        {/* create new data in path /admin/product */}
+
+          <button 
+          className="linear mt-2 px-5 rounded-xl bg-brand-500 py-1 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
+          onClick={() => {
+            window.location.href = "/admin/product";
+          }}
+          >
+            เพิ่มสินค้า
+          </button>
+
       </header>
 
       <div className="mt-8 overflow-x-scroll xl:overflow-x-hidden">
