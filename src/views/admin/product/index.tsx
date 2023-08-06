@@ -95,13 +95,19 @@ const Product = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             }).then((response: any) => {
-                if (response.data.code === 201) {
+                console.log("add-product", response.data);
+                if (response.data.code === 200) {
                     notification.success({
                         message: 'เพิ่มข้อมูลสำเร็จ',
                         description:
                             'เพิ่มข้อมูลสำเร็จ',
                     });
-                    window.location.href = "/admin/product";
+                    //countdown 2 sec
+                    setTimeout(() => {
+                        window.location.href = '/admin/product';
+                    }, 3000);
+
+                    // window.location.href = "/admin/product";
                 } else if (response.data.code === 500) {
                     setAlertError(500);
                     notification.error({
