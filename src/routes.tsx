@@ -11,6 +11,7 @@ import Sell from "views/admin/sell";
 import Selllist from "views/admin/selllist";
 import Stockphama from "views/admin/stockphama";
 import Product from "views/admin/product";
+import SignUp from "views/auth/Signup";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -100,6 +101,13 @@ const routes = [
     icon: <MdLock className="h-6 w-6" />,
     component: <SignIn />,
   },
+  {
+    name: "Sign Up",
+    layout: "/auth",
+    path: "sign-up",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <SignUp />,
+  }
   // {
   //   name: "RTL Admin",
   //   layout: "/rtl",

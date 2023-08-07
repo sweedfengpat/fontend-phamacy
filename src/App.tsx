@@ -10,8 +10,9 @@ const App = () => {
   useEffect(() => {
     const protocol = window.location.protocol;
     const host = window.location.host;
-    console.log(protocol ,host);
-    if(localStorage.getItem('email') === null && localStorage.getItem('password') === null && window.location.href !== `${protocol}//${host}/auth/sign-in`){
+    const CheckURL = window.location.href !== `${protocol}//${host}/auth/sign-in` || window.location.href !== `${protocol}//${host}/auth/sign-up`;
+    console.log(CheckURL);
+    if(localStorage.getItem('email') === null && localStorage.getItem('password') === null && !CheckURL){
       window.location.href = '/auth/sign-in';
     }
     //tailwind set dark default theme

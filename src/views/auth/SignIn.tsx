@@ -129,7 +129,7 @@ export default function SignIn() {
             ยังไม่มีบัญชีใช่ไหม
           </span>
           <a
-            href=" "
+            onClick={() => window.location.href = '/auth/sign-up'}
             className="ml-1 text-sm font-medium text-white hover:text-brand-600 dark:text-white"
           >
             สมัครสมาชิก
