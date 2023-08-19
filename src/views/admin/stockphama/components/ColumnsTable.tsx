@@ -30,7 +30,7 @@ function ColumnsTable(props: { tableData: any }) {
   const { tableData } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
-  console.log("tableData",tableData);
+
 
   const { confirm } = Modal;
 
@@ -43,7 +43,6 @@ function ColumnsTable(props: { tableData: any }) {
         const formData = new FormData();
         formData.append('id', id.toString());
         axios.post(`${baseURL}/delete-product`, formData).then((response: any) => {
-          console.log(response.data);
           window.location.reload();
         });
       },
@@ -176,7 +175,6 @@ function ColumnsTable(props: { tableData: any }) {
     setData(defaultData);
   }, [defaultData]);
 
-  console.log("data",data);
   return (
     <Card extra={"w-full pb-10 p-4 h-full"}>
       <header className="relative flex items-center justify-between">

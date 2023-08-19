@@ -12,6 +12,7 @@ import Selllist from "views/admin/selllist";
 import Stockphama from "views/admin/stockphama";
 import Product from "views/admin/product";
 import SignUp from "views/auth/Signup";
+import Category from "views/admin/category"
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -23,12 +24,21 @@ import {
   MdBarChart,
   MdPerson,
   MdLock,
+  MdCategory,
+  MdStore
 } from "react-icons/md";
 
 const routes = [
   {
     name: "Main Dashboard",
     layout: "/admin",
+    path: "default",
+    icon: <MdHome className="h-6 w-6" />,
+    component: <MainDashboard />,
+  },
+  {
+    name: "Main Dashboard",
+    layout: "/user",
     path: "default",
     icon: <MdHome className="h-6 w-6" />,
     component: <MainDashboard />,
@@ -73,10 +83,18 @@ const routes = [
     icon:  <MdOutlineShoppingCart className="h-6 w-6" />,
     path: "selllist",
     component: <Selllist />,
-  },{
+  },
+  {
+    name: "ประเภทยาและสินต้า",
+    layout: "/admin",
+    icon:  <MdCategory className="h-6 w-6" />,
+    path:"category",
+    component: <Category/>
+  },
+  {
     name: "คลังยา",
     layout: "/admin",
-    icon:  <MdOutlineShoppingCart className="h-6 w-6" />,
+    icon:  <MdStore className="h-6 w-6" />,
     path: "stockphama",
     component: <Stockphama />,
   },

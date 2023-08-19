@@ -24,7 +24,6 @@ const Tables = () => {
       axios.post(`${baseURL}/all-product`, formData).then((response: any) => {
         let new_rows: any = [];
         let data = JSON.parse(response.data);
-        console.log("data",data);
         setTableDataColumns(data);
       });
     }

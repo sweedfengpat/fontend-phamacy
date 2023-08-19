@@ -16,12 +16,22 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
   };
 
   const createLinks = (routes: RoutesType[]) => {
-    routes = routes.filter((route) => route.name !== "Sign In" && route.path !== "product");
+    routes = routes.filter((route) => route.name !== "Sign In" && route.path !== "product" && route.path !== "sign-up");
+    const User = JSON.parse(localStorage.getItem("user"));
+    const UserRole = User?.Token;
+    const UserRoute = routes.filter((route) => route.layout === "/user");
+    if(UserRole !== null && UserRole !== undefined && UserRole === "user"){
+      routes = UserRoute;
+    }else{
+      const adminRoute = routes.filter((route) => route.layout === "/admin");
+      routes = adminRoute
+    }
     return routes.map((route, index) => {
       if (
         route.layout === "/admin" ||
         route.layout === "/auth" ||
-        route.layout === "/rtl"
+        route.layout === "/RTL" ||
+        route.layout === "/user"
       ) {
         return (
           <Link key={index} to={route.layout + "/" + route.path}>

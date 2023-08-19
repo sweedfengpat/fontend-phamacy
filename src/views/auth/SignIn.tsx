@@ -45,6 +45,7 @@ export default function SignIn() {
               duration: 2,
             });
           } else {
+            localStorage.setItem("user", JSON.stringify(response.data.user));
             let e :any = dataInput.email
             let p :any = dataInput.password
             let hash_email = btoa(e);

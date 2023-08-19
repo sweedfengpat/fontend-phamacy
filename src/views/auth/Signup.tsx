@@ -106,7 +106,7 @@ export default function SignUp() {
     
     axios.post(`${baseURL}/add-address`, { address: dataInput.address,name: dataInput.fristname, email: dataInput.email, password: dataInput.password })
       .then((response: any) => {
-        console.log(response.data);
+
         if (response.data.code === 500) {
           setAlertError(500);
           notification.error({
@@ -116,7 +116,7 @@ export default function SignUp() {
             duration: 2,
           });
         } else if (response.data.code === 200) {
-          console.log(response.data);
+      
           notification.success({
             message: 'สำเร็จ',
             description: 'สมัครสมาชิกสำเร็จ',
