@@ -76,10 +76,10 @@ export default function User() {
               <Routes>
                 {getRoutes(routes)}
 
-                <Route
+                {/* <Route
                   path="/"
                   element={<Navigate to="/user/default" replace />}
-                />
+                /> */}
               </Routes>
             </div>
             <div className="p-3">
