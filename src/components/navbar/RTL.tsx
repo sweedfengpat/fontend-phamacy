@@ -214,6 +214,10 @@ const Navbar = (props: {
                 </a>
                 <a
                   href=" "
+                  onClick={() => {
+                    localStorage.removeItem("email");
+                    localStorage.removeItem("password");
+                  }}
                   className="mt-3 text-sm font-medium text-red-500 hover:text-red-500"
                 >
                   Log Out
