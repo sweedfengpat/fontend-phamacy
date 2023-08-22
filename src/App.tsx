@@ -22,13 +22,21 @@ const App = () => {
     document.body.classList.add("dark");
   }
   , []);
+
+  const user = localStorage.getItem('user');
+
+  //string to json
+  const userJson = JSON.parse(user || '{}');
+
+  const DefaultLayout = userJson.Token === "user" ? <Route path="/" element={<Navigate to="/user" replace />} /> : <Route path="/" element={<Navigate to="/admin" replace />} />;  
+  
   return (
     <Routes>
       <Route path="auth/*" element={<AuthLayout />} />
       <Route path="admin/*" element={<AdminLayout />} />
       <Route path="user/" element={<UserLayout />} />
       <Route path="rtl/*" element={<RtlLayout />} />
-      <Route path="/" element={<Navigate to="/admin" replace />} />
+      {DefaultLayout}
     </Routes>
   );
 };

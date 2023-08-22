@@ -18,6 +18,7 @@ export default function Auth() {
     });
   };
   document.documentElement.dir = "ltr";
+  console.log(getRoutes(routes));
   return (
     <div>
       <div className="relative float-right h-full min-h-screen w-full !bg-navy-900 dark:!bg-navy-900">

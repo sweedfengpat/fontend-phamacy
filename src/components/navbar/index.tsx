@@ -81,16 +81,10 @@ const Navbar = (props: {
 
               <div className="mt-3 ml-4 flex flex-col">
                 <a
-                  href=" "
+                  href="/admin/profile"
                   className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
                 >
                   Profile Settings
-                </a>
-                <a
-                  href=" "
-                  className="mt-3 text-sm text-gray-800 dark:text-white hover:dark:text-white"
-                >
-                  Newsletter Settings
                 </a>
                 <a
                   href=" "
