@@ -3,7 +3,7 @@ import React from "react";
 // Admin Imports
 import MainDashboard from "views/admin/default";
 import NFTMarketplace from "views/admin/marketplace";
-import Profile from "views/user/profile";
+import Profile from "views/users/profile";
 import DataTables from "views/admin/tables";
 import RTLDefault from "views/rtl/default";
 import Finace from "views/admin/finace";
@@ -13,6 +13,11 @@ import Stockphama from "views/admin/stockphama";
 import Product from "views/admin/product";
 import SignUp from "views/auth/Signup";
 import Category from "views/admin/category"
+
+import About from "views/admin/about.tsx";
+import Order from "views/admin/Order";
+import Shipping from "views/admin/Shipping";
+import AllPayment from "views/admin/AllPayment";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -27,24 +32,38 @@ import {
   MdCategory,
   MdStore
 } from "react-icons/md";
+import Address from "views/users/Address";
+import ChangePassword from "views/auth/ChangePassword";
+import CheckOut from "views/users/Checkout";
+import EditAddress from "views/users/EditAddress";
+//import Forgot from "views/users/ChangePassword.tsx";
+import OrderIDUser from "views/users/OrderIdUser";
+import Cart from "views/users/cart";
+import Home from "views/users/Home";
+import Register from "views/auth/Register";
+import History from "views/users/History"
+import LongdoMap from "views/users/LongdoMap"
+import FollowShipping from "views/users/FollowShippin";
+import Forgot from "views/auth/forgot";
+//import ForgotPassword from "views/admin/ForgotPassword.tsx";
 
-const routes = [
+const routes : any = [
+  // {
+  //   name: "Main Dashboard",
+  //   layout: "/admin",
+  //   path: "default",
+  //   icon: <MdHome className="h-6 w-6" />,
+  //   component: <MainDashboard />,
+  // },
+  // {
+  //   name: "Main Dashboard",
+  //   layout: "/user",
+  //   path: "default",
+  //   icon: <MdHome className="h-6 w-6" />,
+  //   component: <MainDashboard />,
+  // },
   {
-    name: "Main Dashboard",
-    layout: "/admin",
-    path: "default",
-    icon: <MdHome className="h-6 w-6" />,
-    component: <MainDashboard />,
-  },
-  {
-    name: "Main Dashboard",
-    layout: "/user",
-    path: "default",
-    icon: <MdHome className="h-6 w-6" />,
-    component: <MainDashboard />,
-  },
-  {
-    name: "คลังยา",
+    name: "คลังสินค้า",
     layout: "/admin",
     path: "product",
     icon: <MdHome className="h-6 w-6" />,
@@ -65,25 +84,25 @@ const routes = [
   //   path: "data-tables",
   //   component: <DataTables />,
   // },
-  {
-    name: "การเงิน",
-    layout: "/admin",
-    icon: <MdBarChart className="h-6 w-6" />,
-    path: "finace",
-    component: <Finace />,
-  },{
-    name: "การขาย",
-    layout: "/admin",
-    icon: <MdBarChart className="h-6 w-6" />,
-    path: "sell",
-    component: <Sell />,
-  },{
-    name: "รายการสั่งซื้อ",
-    layout: "/admin",
-    icon:  <MdOutlineShoppingCart className="h-6 w-6" />,
-    path: "selllist",
-    component: <Selllist />,
-  },
+  // {
+  //   name: "การเงิน",
+  //   layout: "/admin",
+  //   icon: <MdBarChart className="h-6 w-6" />,
+  //   path: "finace",
+  //   component: <Finace />,
+  // },{
+  //   name: "การขาย",
+  //   layout: "/admin",
+  //   icon: <MdBarChart className="h-6 w-6" />,
+  //   path: "sell",
+  //   component: <Sell />,
+  // },{
+  //   name: "รายการสั่งซื้อ",
+  //   layout: "/admin",
+  //   icon:  <MdOutlineShoppingCart className="h-6 w-6" />,
+  //   path: "selllist",
+  //   component: <Selllist />,
+  // },
   {
     name: "ประเภทยาและสินต้า",
     layout: "/admin",
@@ -98,6 +117,34 @@ const routes = [
     path: "stockphama",
     component: <Stockphama />,
   },
+  {
+    name: "ตรวจสอบการสั่งซื้อ",
+    layout: "/admin",
+    icon:  <MdStore className="h-6 w-6" />,
+    path: "order",
+    component: <Order />,
+  },
+  {
+    name: "ตรวจสอบการส่งสินค้า",
+    layout: "/admin",
+    icon:  <MdStore className="h-6 w-6" />,
+    path: "Shipping",
+    component: <Shipping />,
+  },
+  {
+    name: "ยอดขายรายเดือน",
+    layout: "/admin",
+    icon:  <MdStore className="h-6 w-6" />,
+    path: "AllPayment",
+    component: <AllPayment />,
+  },
+  {
+    name: "เกี่ยวกับฉัน",
+    layout: "/admin",
+    icon:  <MdStore className="h-6 w-6" />,
+    path: "about",
+    component: <About />,
+  },
   // {
   //   name: "NFT Marketplace",
   //   layout: "/admin",
@@ -105,20 +152,20 @@ const routes = [
   //   icon: <MdOutlineShoppingCart className="h-6 w-6" />,
   //   component: <NFTMarketplace />,
   // },
-  {
-    name: "Profile",
-    layout: "/admin",
-    path: "profile",
-    icon: <MdPerson className="h-6 w-6" />,
-    component: <Profile />,
-  },
-  {
-    name: "Profile",
-    layout: "/user",
-    path: "profile",
-    icon: <MdPerson className="h-6 w-6" />,
-    component: <Profile />,
-  },
+  // {
+  //   name: "Profile",
+  //   layout: "/admin",
+  //   path: "profile",
+  //   icon: <MdPerson className="h-6 w-6" />,
+  //   component: <Profile />,
+  // },
+  // {
+  //   name: "Profile",
+  //   layout: "/user",
+  //   path: "profile",
+  //   icon: <MdPerson className="h-6 w-6" />,
+  //   component: <Profile />,
+  // },
   {
     name: "Sign In",
     layout: "/auth",
@@ -132,7 +179,106 @@ const routes = [
     path: "sign-up",
     icon: <MdLock className="h-6 w-6" />,
     component: <SignUp />,
-  }
+  },
+  {
+    name: "ลืมรหัสผ่าน",
+    layout: "/auth",
+    path: "forgot",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <Forgot />,
+  },
+  {
+    name: "จัดการที่อยู่",
+    layout: "/users",
+    path: "address",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <Address />,
+  },
+  {
+    name: "เปลี่ยนรหัสผ่าน",
+    layout: "/user",
+    path: "change-password",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <ChangePassword />,
+  },
+  {
+    name: "ชำระเงิน",
+    layout: "/users",
+    path: "checkout",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <CheckOut />,
+  },
+  {
+    name: "แก้ไขที่อยู่",
+    layout: "/users",
+    path: "edit-address",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <EditAddress />,
+  },
+  {
+    name: "เปลี่ยนรหัสผ่าน",
+    layout: "/users",
+    path: "change-ยassword",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <ChangePassword />,
+  },
+  {
+    name: "ประวัติ",
+    layout: "/users",
+    path: "history",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <History />,
+  },
+  {
+    name: "แผนที่",
+    layout: "/users",
+    path: "longdo-map",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <LongdoMap />,
+  },
+  {
+    name: "ใบสั่งซื้อ",
+    layout: "/users",
+    path: "order-id-user",
+    icon: <MdLock className="h-6 w-6" />,
+   component: <OrderIDUser />,
+  },
+  {
+    name: "Profile",
+    layout: "/users",
+    path: "profile",
+    icon: <MdLock className="h-6 w-6" />,
+   component: <Profile />,
+  },
+  {
+    name: "ตระกร้า",
+    layout: "/users",
+    path: "cart",
+    icon: <MdLock className="h-6 w-6" />,
+   component: <Cart />,
+  },
+  {
+    name: "ติดตามสินค้า",
+    layout: "/users",
+    path: "follow-shiping",
+    icon: <MdLock className="h-6 w-6" />,
+   component: <FollowShipping />,
+  },
+  {
+    name: "Home",
+    layout: "/users",
+    path: "home",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <Home />,
+  },
+  // {
+  //   name: "Register",
+  //   layout: "/users",
+  //   path: "register",
+  //   icon: <MdLock className="h-6 w-6" />,
+  //  component: <Register />,
+  // },
+  
   // {
   //   name: "RTL Admin",
   //   layout: "/rtl",

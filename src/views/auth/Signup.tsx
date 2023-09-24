@@ -10,12 +10,7 @@ interface Data {
   email: string;
   fristname?: string;
   lastname?: string;
-  tel: string;
   password: string;
-  personal_id: string;
-  address: string;
-  brithday: string;
-  gender?: string;
 }
 
 export default function SignUp() {
@@ -27,11 +22,6 @@ export default function SignUp() {
     password: "",
     fristname: "",
     lastname: "",
-    tel: "",
-    personal_id: "",
-    address: "",
-    brithday: "",
-    gender: "male",
   });
 
   const ValidateDataInput = () => {
@@ -67,72 +57,40 @@ export default function SignUp() {
         duration: 2,
       });
       return false;
-    } else if (dataInput.tel === '') {
-      notification.error({
-        message: 'เกิดข้อผิดพลาด',
-        description: 'กรุณากรอกเบอร์โทร',
-        placement: 'topRight',
-        duration: 2,
-      });
-      return false;
-    } else if (dataInput.personal_id === '') {
-      notification.error({
-        message: 'เกิดข้อผิดพลาด',
-        description: 'กรุณากรอกเลขบัตรประชาชน',
-        placement: 'topRight',
-        duration: 2,
-      });
-      return false;
-    } else if (dataInput.address === '') {
-      notification.error({
-        message: 'เกิดข้อผิดพลาด',
-        description: 'กรุณากรอกที่อยู่',
-        placement: 'topRight',
-        duration: 2,
-      });
-      return false
-    } else if (dataInput.brithday === '') {
-      notification.error({
-        message: 'เกิดข้อผิดพลาด',
-        description: 'กรุณากรอกวันเกิด',
-        placement: 'topRight',
-        duration: 2,
-      });
-      return false
     }
   }
 
-  const PostAdders = () => {
+  // const PostAdders = () => {
     
-    axios.post(`${baseURL}/add-address`, { address: dataInput.address,name: dataInput.fristname, email: dataInput.email, password: dataInput.password })
-      .then((response: any) => {
+  //   axios.post(`${baseURL}/add-address`, { address: dataInput.address,name: dataInput.fristname, email: dataInput.email, password: dataInput.password })
+  //     .then((response: any) => {
 
-        if (response.data.code === 500) {
-          setAlertError(500);
-          notification.error({
-            message: 'เกิดข้อผิดพลาด',
-            description: 'ไม่สามารถสมัครสมาชิกได้',
-            placement: 'topRight',
-            duration: 2,
-          });
-        } else if (response.data.code === 200) {
+  //       if (response.data.code === 500) {
+  //         setAlertError(500);
+  //         notification.error({
+  //           message: 'เกิดข้อผิดพลาด',
+  //           description: 'ไม่สามารถสมัครสมาชิกได้',
+  //           placement: 'topRight',
+  //           duration: 2,
+  //         });
+  //       } else if (response.data.code === 200) {
       
-          notification.success({
-            message: 'สำเร็จ',
-            description: 'สมัครสมาชิกสำเร็จ',
-            placement: 'topRight',
-            duration: 2,
-          });
-          window.location.href = '/auth/sign-in';
-        }
-      });
-  }
+  //         notification.success({
+  //           message: 'สำเร็จ',
+  //           description: 'สมัครสมาชิกสำเร็จ',
+  //           placement: 'topRight',
+  //           duration: 2,
+  //         });
+  //         window.location.href = '/auth/sign-in';
+  //       }
+  //     });
+  // }
 
   const handleSubmit = () => {
 
     if (!ValidateDataInput()) {
       //delete address from dataInput
-      const { address, ...data } = dataInput;
+      const {...data } = dataInput;
       axios.post(`${baseURL}/sign-up`, { ...data, token: "user" })
         .then((response: any) => {
           if (response.data.code === 500) {
@@ -146,15 +104,16 @@ export default function SignUp() {
           }
           if (response.data.code === 200) {
             notification.success({
-              message: 'สำเร็จขั้น 1',
-              description: 'สำเร็จขั้น 1',
+              message: 'สำเร็จ',
+              description: 'สมัครสมาชิกสำเร็จ',
               placement: 'topRight',
               duration: 2,
             });
-            PostAdders()
+            // PostAdders()
           }
         });
-    } else {
+    } 
+    else {
       setAlertError(500);
       notification.error({
         message: 'เกิดข้อผิดพลาด',
@@ -177,28 +136,6 @@ export default function SignUp() {
           กรุณากรอกข้อมูลเพื่อสมัครสมาชิก
         </p>
         <div className="grid grid-cols-2 gap-5">
-          {/* Email */}
-          <InputField
-            variant="auth"
-            extra="mb-3"
-            label="Email*"
-            placeholder="E-mail address"
-            id="email"
-            type="text"
-            value={dataInput.email}
-            onChange={(e: any) => setDataINput({ ...dataInput, email: e.target.value })}
-          />
-          {/* Password */}
-          <InputField
-            variant="auth"
-            extra="mb-3"
-            label="Password*"
-            placeholder="Password"
-            id="password"
-            type="password"
-            value={dataInput.password}
-            onChange={(e: any) => setDataINput({ ...dataInput, password: e.target.value })}
-          />
 
           {/* ชื่อ */}
           <InputField
@@ -224,74 +161,29 @@ export default function SignUp() {
             value={dataInput.lastname}
             onChange={(e: any) => setDataINput({ ...dataInput, lastname: e.target.value })}
           />
-
-          {/* วันเกิด */}
+          {/* Email */}
           <InputField
             variant="auth"
             extra="mb-3"
-            label="วันเกิด*"
-            placeholder="วันเกิด"
-            id="brithday"
-            type="date"
-            value={dataInput.brithday}
-            onChange={(e: any) => setDataINput({ ...dataInput, brithday: e.target.value })}
-          />
-          {/* เพศ */}
-          <div className=" col-span-1">
-            <div className="flex flex-col ">
-              <p className=" font-medium text-white dark:text-white">
-                เพศ
-              </p>
-              {/* combobox gender */}
-              <select
-                className="w-full h-12 pl-4 mt-2 border-2 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent dark:!text-[#000] dark:bg-[#fff] dark:border-[#000]"
-                placeholder="เพศ"
-                onChange={(e) => setDataINput({ ...dataInput, gender: e.target.value })}
-                value={dataInput.gender}
-              >
-                <option value="male">ชาย</option>
-                <option value="female">หญิง</option>
-              </select>
-
-            </div>
-          </div>
-
-
-          {/* เบอร์โทร */}
-          <InputField
-            variant="auth"
-            extra="mb-3"
-            label="เบอร์โทร*"
-            placeholder="เบอร์โทร"
-            id="tel"
+            label="Email*"
+            placeholder="E-mail address"
+            id="email"
             type="text"
-            value={dataInput.tel}
-            onChange={(e: any) => setDataINput({ ...dataInput, tel: e.target.value })}
+            value={dataInput.email}
+            onChange={(e: any) => setDataINput({ ...dataInput, email: e.target.value })}
           />
-          {/* เลขบัตรประชาชน */}
+          {/* Password */}
           <InputField
             variant="auth"
             extra="mb-3"
-            label="เลขบัตรประชาชน*"
-            placeholder="เลขบัตรประชาชน"
-            id="personal_id"
-            type="text"
-            value={dataInput.personal_id}
-            onChange={(e: any) => setDataINput({ ...dataInput, personal_id: e.target.value })}
+            label="Password*"
+            placeholder="Password"
+            id="password"
+            type="password"
+            value={dataInput.password}
+            onChange={(e: any) => setDataINput({ ...dataInput, password: e.target.value })}
           />
-          <div className=" col-span-2">
-            {/* ที่อยู่ */}
-            <InputField
-              variant="auth"
-              extra="mb-3"
-              label="ที่อยู่*"
-              placeholder="ที่อยู่"
-              id="address"
-              type="text"
-              value={dataInput.address}
-              onChange={(e: any) => setDataINput({ ...dataInput, address: e.target.value })}
-            />
-          </div>
+          
         </div>
         <button
           className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"

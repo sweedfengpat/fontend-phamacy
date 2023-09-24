@@ -4,7 +4,7 @@ import RtlLayout from "layouts/rtl";
 import AdminLayout from "layouts/admin";
 import AuthLayout from "layouts/auth";
 import UserLayout from "layouts/user";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
 
@@ -24,17 +24,18 @@ const App = () => {
   , []);
 
   const user = localStorage.getItem('user');
-
+ 
   //string to json
-  const userJson = JSON.parse(user || '{}');
+    // const userJson = {Token: 'Admin'};
+   const userJson = JSON.parse(user);
+   
 
-  const DefaultLayout = userJson.Token === "user" ? <Route path="/" element={<Navigate to="/user" replace />} /> : <Route path="/" element={<Navigate to="/admin" replace />} />;  
-  
+  const DefaultLayout = userJson?.Token === "user" ? <Route path="/" element={<Navigate to="/users" replace />} /> : <Route path="/" element={<Navigate to="/admin" replace />} />;  
   return (
     <Routes>
       <Route path="auth/*" element={<AuthLayout />} />
       <Route path="admin/*" element={<AdminLayout />} />
-      <Route path="user/" element={<UserLayout />} />
+      <Route path="users/*" element={<UserLayout />} />
       <Route path="rtl/*" element={<RtlLayout />} />
       {DefaultLayout}
     </Routes>

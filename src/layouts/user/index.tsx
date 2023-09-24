@@ -1,11 +1,12 @@
 import React from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import Navbar from "components/navbar/RTL";
-import Sidebar from "components/sidebar/RTL";
+import Navbar from "components/navbar";
+import Sidebar from "components/sidebar";
 import Footer from "components/footer/Footer";
 import routes from "routes";
 
-export default function User() {
+export default function User(props: { [x: string]: any }) {
+  const { ...rest } = props;
   const location = useLocation();
   const [open, setOpen] = React.useState(true);
   const [currentRoute, setCurrentRoute] = React.useState("Main Dashboard");
@@ -20,7 +21,7 @@ export default function User() {
   }, [location.pathname]);
 
   const getActiveRoute = (routes: RoutesType[]): string | boolean => {
-    let activeRoute = "user";
+    let activeRoute = "User";
     for (let i = 0; i < routes.length; i++) {
       if (
         window.location.href.indexOf(
@@ -45,7 +46,7 @@ export default function User() {
   };
   const getRoutes = (routes: RoutesType[]): any => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/user") {
+      if (prop.layout === "/users") {
         return (
           <Route path={`/${prop.path}`} element={prop.component} key={key} />
         );
@@ -55,10 +56,10 @@ export default function User() {
     });
   };
 
-  document.documentElement.dir = "rtl";
+  document.documentElement.dir = "ltr";
   return (
     <div className="flex h-full w-full">
-      <Sidebar open={open} onClose={() => setOpen(false)} />
+      <Sidebar open={true} onClose={() => {}} />
       {/* Navbar & Main Content */}
       <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900 min-h-screen">
         {/* Main Content */}
@@ -71,15 +72,16 @@ export default function User() {
               onOpenSidenav={() => setOpen(true)}
               brandText={currentRoute}
               secondary={getActiveNavbar(routes)}
+              {...rest}
             />
             <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">
               <Routes>
                 {getRoutes(routes)}
 
-                {/* <Route
+                <Route
                   path="/"
-                  element={<Navigate to="/user/default" replace />}
-                /> */}
+                  element={<Navigate to="/users/home" replace />}
+                />
               </Routes>
             </div>
             <div className="p-3">

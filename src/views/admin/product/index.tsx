@@ -1,10 +1,9 @@
-
 import { useEffect } from "react";
 import React from "react";
-import { baseURL, baseURLstatic } from "lib/url";
 import axios from "axios";
 import Card from "components/card";
 import { notification } from "antd";
+import { baseURL, baseURLstatic } from "lib/url";
 
 interface DataInput {
     id: number;
@@ -17,123 +16,121 @@ interface DataInput {
     productDescription: string;
 }
 
-const Product = () => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const id = urlParams.get('id');
-    const [initData, setInitData] = React.useState<DataInput>({} as DataInput);
-    const [productTypeList, setProductTypeList] = React.useState<any>([]);
-    const [productImage, setProductImage] = React.useState<File>();
-    const [alertError, setAlertError] = React.useState<number>();
+function AddProduct() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const id = urlParams.get('id');
+  const [initData, setInitData] = React.useState<DataInput>({} as DataInput);
+  const [productTypeList, setProductTypeList] = React.useState<any>([]);
+  const [productImage, setProductImage] = React.useState<File>();
+  const [alertError, setAlertError] = React.useState<number>();
 
-    useEffect(() => {
-        if (id) {
-            const formData = new FormData();
-            formData.append('id', id?.toString()!);
-            axios.post(`${baseURL}/get-product`, formData).then((response: any) => {
-                console.log("get-product", response.data);
-                setInitData(response.data);
-            }).catch((error) => {
-                console.log(error);
-            });
-        }
-    }, []);
+  useEffect(() => {
+      if (id) {
+          const formData = new FormData();
+          formData.append('id', id?.toString()!);
+          axios.post(`${baseURL}/get-product`, formData).then((response: any) => {
+              console.log("get-product", response.data);
+              setInitData(response.data);
+          }).catch((error) => {
+              console.log(error);
+          });
+      }
+  }, []);
 
-    useEffect(() => {
-        const formData = new FormData();
-        axios.post(`${baseURL}/all-category`, formData).then((response: any) => {
-            let new_rows: any = [];
-            let data = JSON.parse(response.data);
-            console.log("all-category", data);
+  useEffect(() => {
+      const formData = new FormData();
+      axios.post(`${baseURL}/all-category`, formData).then((response: any) => {
+          let new_rows: any = [];
+          let data = JSON.parse(response.data);
+          console.log("all-category", data);
 
-            setProductTypeList(data);
-        });
+          setProductTypeList(data);
+      });
 
-    }, []);
+  }, []);
 
-    const handleSubmit = () => {
+  const handleSubmit = () => {
 
-        if (id) {
-            const formData = new FormData();
-            formData.append('productType', initData.productType);
-            formData.append('productName', initData.productName);
-            formData.append('productPrice', initData.productPrice);
-            formData.append('productDescription', initData.productDescription);
-            formData.append('productCode', initData.productCode);
-            formData.append('productAmount', initData.productAmount.toString());
-            formData.append('id', id?.toString()!);
-            axios.post(`${baseURL}/update-product`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            }).then((response: any) => {
-                if (response.data.code === 200) {
-                    notification.success({
-                        message: 'แก้ไขข้อมูลสำเร็จ',
-                        description:
+      if (id) {
+          const formData = new FormData();
+          if (productImage) formData.append('upload', productImage);
+          formData.append('productType', initData.productType);
+          formData.append('productName', initData.productName);
+          formData.append('productPrice', initData.productPrice);
+          formData.append('productDescription', initData.productDescription);
+          formData.append('productCode', initData.productCode);
+          formData.append('productAmount', initData.productAmount.toString());
+          formData.append('id', id?.toString()!);
+          axios.post(`${baseURL}/update-product`, formData, {
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+              },
+          }).then((response: any) => {
+              if (response.data.code === 200) {
+                  notification.success({
+                      message: 'แก้ไขข้อมูลสำเร็จ',
+                      description:
 
-                            'แก้ไขข้อมูลสำเร็จ',
-                    });
-                    setTimeout(() => {
-                        window.location.href = '/admin/product?id=' + id;
-                    }, 2000);
-                } else if (response.data.code === 500) {
-                    setAlertError(500);
-                }
-            });
-        }else{
-            const formData = new FormData();
-            formData.append('upload', productImage!);
-            formData.append('productType', initData.productType);
-            formData.append('productName', initData.productName);
-            formData.append('productPrice', initData.productPrice);
-            formData.append('productDescription', initData.productDescription);
-            formData.append('productCode', initData.productCode);
-            formData.append('productAmount', initData.productAmount);
-            axios.post(`${baseURL}/add-product`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            }).then((response: any) => {
-                console.log("add-product", response.data);
-                if (response.data.code === 200) {
-                    notification.success({
-                        message: 'เพิ่มข้อมูลสำเร็จ',
-                        description:
-                            'เพิ่มข้อมูลสำเร็จ',
-                    });
-                    //countdown 2 sec
-                    setTimeout(() => {
-                        window.location.href = '/admin/product';
-                    }, 3000);
+                          'แก้ไขข้อมูลสำเร็จ',
+                  });
+                  setTimeout(() => {
+                      window.location.href = '/admin/product?id=' + id;
+                  }, 2000);
+              } else if (response.data.code === 500) {
+                  setAlertError(500);
+              }
+          });
+      }else{
+          const formData = new FormData();
+          formData.append('upload', productImage);
+          formData.append('productType', initData.productType);
+          formData.append('productName', initData.productName);
+          formData.append('productPrice', initData.productPrice);
+          formData.append('productDescription', initData.productDescription);
+          formData.append('productCode', initData.productCode);
+          formData.append('productAmount', initData.productAmount);
+          axios.post(`${baseURL}/add-product`, formData, {
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+              },
+          }).then((response: any) => {
+              console.log("add-product", response.data);
+              if (response.data.code === 200) {
+                  notification.success({
+                      message: 'เพิ่มข้อมูลสำเร็จ',
+                      description:
+                          'เพิ่มข้อมูลสำเร็จ',
+                  });
+                  //countdown 2 sec
+                  setTimeout(() => {
+                      window.location.href = '/admin/product';
+                  }, 3000);
 
-                    // window.location.href = "/admin/product";
-                } else if (response.data.code === 500) {
-                    setAlertError(500);
-                    notification.error({
-                        message: 'เกิดข้อผิดพลาด',
-                        description:
-                            'Error 500',
-                    });
-                }
-            });
-        }
+                  // window.location.href = "/admin/product";
+              } else if (response.data.code === 500) {
+                  setAlertError(500);
+                  notification.error({
+                      message: 'เกิดข้อผิดพลาด',
+                      description:
+                          'Error 500',
+                  });
+              }
+          });
+      }
+  
+  
+  };
 
-
-    };
-
-    return (
-        <div>
-
+  return (
+ 
             <div className="mt-5  h-full grid-cols-1 gap-5 md:grid-cols-2">
-                {/* creat form edit and post data input for DataInput */}
-
+                
                 <Card extra={"w-full pb-10 p-4 h-full"}>
                     <header className="relative flex items-center justify-between">
-                        <div className="text-xl font-bold text-navy-700 dark:text-white">
+                        <div className="text-xl font-bold text-navy-700 dark:text-black">
                             รายการคลังยา
                         </div>
-
                     </header>
 
                     <div className="mt-8 overflow-x-scroll xl:overflow-x-hidden">
@@ -247,12 +244,9 @@ const Product = () => {
                 </Card>
 
             </div>
-        </div>
-    );
-};
-
-export default Product;
-function setAlertError(arg0: number) {
-    throw new Error("Function not implemented.");
+       
+  );
+  
 }
 
+export default AddProduct

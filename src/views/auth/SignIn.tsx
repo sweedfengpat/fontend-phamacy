@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 import InputField from "components/fields/InputField";
 // import { FcGoogle } from "react-icons/fc";
 import Checkbox from "components/checkbox";
 import { baseURL } from "lib/url";
 import {  notification } from 'antd';
+import axios from "axios";
 
 interface Data {
   email: string;
@@ -45,9 +45,9 @@ export default function SignIn() {
               duration: 2,
             });
           } else {
-            localStorage.setItem("user", JSON.stringify(response.data.user));
-            let e :any = dataInput.email
-            let p :any = dataInput.password
+            localStorage.setItem("user", JSON.stringify(response.data));
+            let e :any = response.data.email
+            let p :any = response.data.password
             let hash_email = btoa(e);
             let hash_password = btoa(p);
             localStorage.setItem("email", hash_email);
@@ -114,14 +114,14 @@ export default function SignIn() {
           </div>
           <a
             className="text-sm font-medium text-white hover:text-brand-600 dark:text-white"
-            href=" "
+            onClick={() => window.location.href = '/auth/forgot'}
           >
             ลืมรหัสผ่าน?
           </a>
         </div>
         <button 
         className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
-        onClick={e => handleSubmit()}
+        onClick={(e) => handleSubmit()}
         >
          ลงชื่อเข้าใช้
         </button>
