@@ -95,8 +95,8 @@ function Home() {
   }
 
   return (
-        <>
-        <div className='mt-5'>
+        <div className='w-fit'>
+        <div className='mt-5 '>
             <h1>สินค้า</h1>
         </div>
         <div className='mt-2' style={{width: '150px'}}>
@@ -140,7 +140,7 @@ function Home() {
 
         </Grid>
 
-        </>
+        </div>
   )
 }
 

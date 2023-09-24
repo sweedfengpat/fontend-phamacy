@@ -81,7 +81,7 @@ function ChangePassword() {
   };
 
   return (
-    <div>
+    <div className='!text-white'>
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />

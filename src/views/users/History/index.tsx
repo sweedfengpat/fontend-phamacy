@@ -49,7 +49,7 @@ function History() {
   
     return (
       <div>
-          <div style={{textAlign: 'center', marginTop: '20px'}}>
+          <div style={{textAlign: 'center', marginTop: '20px'}} className='!text-white'>
               <h1>History</h1>
               <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">

@@ -84,18 +84,18 @@ function OrderIDUser() {
 
         });
         let new_rows = [];
-        let listprice = price.split(",");
-        let listamount = amount.split(",");
-        let listname = name.split(",");
-        if (listprice.length === 0){
+        let listprice = price?.split(",");
+        let listamount = amount?.split(",");
+        let listname = name?.split(",");
+        if (listprice?.length === 0){
             listprice = [price];
             listamount = [amount];
             listname = [name];
         }
         let t = 0;
-        for (let i = 0; i < listprice.length; i++) {
+        for (let i = 0; i < listprice?.length; i++) {
             let total = parseInt(listprice[i]) * parseInt(listamount[i]);
-            new_rows.push(createData(i, listname[i], listprice[i], listamount[i], total.toString()));
+            new_rows.push(createData(i, listname[i], listprice[i], listamount[i], total?.toString()));
             t += total;
         }
         setTotal(t.toString());
@@ -110,7 +110,7 @@ function OrderIDUser() {
     });
   
     return (
-      <div>
+      <div className='!text-white'>
         <div style={{paddingTop: "1%", textAlign: "right"}}>
         <Button sx={{borderRadius: '20px'}} variant="contained" color='success' onClick={{handlePrint}}><LocalPrintshopIcon /></Button>
           <div style={{textAlign: 'center', marginTop: '20px'}} ref={componentRef}>
@@ -127,9 +127,9 @@ function OrderIDUser() {
                     <h5>ราคารวม : {total}</h5>
                     <h5>สถานะ : {status}</h5>
                 </div>
-                <div className='col-12 text-center'>
+                {/* <div className='col-12 text-center'>
                     <img src={baseURLstatic + "/" + image} width={200} height={200} alt="" />
-                </div>
+                </div> */}
 
               </div>
               <TableContainer component={Paper}>

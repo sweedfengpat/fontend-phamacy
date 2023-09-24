@@ -18,9 +18,9 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
   const createLinks = (routes: RoutesType[]) => {
     routes = routes.filter((route) => route.name !== "Sign In" && route.path !== "product" && route.path !== "sign-up");
     const User = JSON.parse(localStorage.getItem("user"));
-    const UserRole = User?.Token;
+    const UserRole = User?.token;
     const UserRoute = routes.filter((route) => route.layout === "/users");
-    if(UserRole !== null && UserRole !== undefined && UserRole === "users"){
+    if(UserRole !== null && UserRole !== undefined && UserRole === "user"){
       // return;
       routes = UserRoute;
     }else{

@@ -22,3 +22,45 @@ input.defaultCheckbox::before {
 input:checked.defaultCheckbox::before { 
 	opacity: 1;
 }
+
+h1{
+	color: white !important;
+	font-size: 2.5rem !important;
+}
+
+h2{
+	color: white !important;
+	font-size: 2rem !important;
+}
+
+h5{
+	color: white !important;
+	font-size: 1.3rem !important;
+}
+
+input{
+	background-color: transparent !important;
+	color: #fff !important;
+
+}
+.cto-InputAddress1 div{
+	background-color:rgb(11 20 55) !important;
+	color: #fff !important;
+	cursor: pointer;
+}
+
+.cto-InputAddress1 fieldset{
+	border-color: #fff !important;
+}
+
+.cto-InputAddress div{
+	background-color:rgb(11 20 55) !important;
+	color: #fff !important;
+	cursor: pointer;
+
+}
+
+label{
+	color: white !important;
+}
+

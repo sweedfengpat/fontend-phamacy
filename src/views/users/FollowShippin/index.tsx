@@ -27,7 +27,7 @@ const rows = [
 
 function FollowShipping() {
     return (
-        <div style={{marginTop: '10px', padding: '20px'}}>
+        <div style={{marginTop: '10px', padding: '20px'}} className='!text-white'>
             <h1 style={{textAlign: 'center'}}>ติดตามสินค้า</h1>
     <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">

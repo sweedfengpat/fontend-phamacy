@@ -188,6 +188,13 @@ const routes : any = [
     component: <Forgot />,
   },
   {
+    name: "Home",
+    layout: "/users",
+    path: "home",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <Home />,
+  },
+  {
     name: "จัดการที่อยู่",
     layout: "/users",
     path: "address",
@@ -229,13 +236,13 @@ const routes : any = [
     icon: <MdLock className="h-6 w-6" />,
     component: <History />,
   },
-  {
-    name: "แผนที่",
-    layout: "/users",
-    path: "longdo-map",
-    icon: <MdLock className="h-6 w-6" />,
-    component: <LongdoMap />,
-  },
+  // {
+  //   name: "แผนที่",
+  //   layout: "/users",
+  //   path: "longdo-map",
+  //   icon: <MdLock className="h-6 w-6" />,
+  //   component: <LongdoMap />,
+  // },
   {
     name: "ใบสั่งซื้อ",
     layout: "/users",
@@ -264,13 +271,7 @@ const routes : any = [
     icon: <MdLock className="h-6 w-6" />,
    component: <FollowShipping />,
   },
-  {
-    name: "Home",
-    layout: "/users",
-    path: "home",
-    icon: <MdLock className="h-6 w-6" />,
-    component: <Home />,
-  },
+ 
   // {
   //   name: "Register",
   //   layout: "/users",

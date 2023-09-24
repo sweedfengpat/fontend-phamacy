@@ -106,7 +106,7 @@ function Address() {
   };
 
   return (
-    <div>
+    <div className='!text-white'>
       <div style={{ textAlign: 'center', marginTop: '10px' }}>
         <h1>จัดการที่อยู่</h1>
 

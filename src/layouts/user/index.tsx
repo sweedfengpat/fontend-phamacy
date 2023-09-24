@@ -21,7 +21,7 @@ export default function User(props: { [x: string]: any }) {
   }, [location.pathname]);
 
   const getActiveRoute = (routes: RoutesType[]): string | boolean => {
-    let activeRoute = "User";
+    let activeRoute = "users";
     for (let i = 0; i < routes.length; i++) {
       if (
         window.location.href.indexOf(
@@ -56,7 +56,7 @@ export default function User(props: { [x: string]: any }) {
     });
   };
 
-  document.documentElement.dir = "ltr";
+  document.documentElement.dir = "users";
   return (
     <div className="flex h-full w-full">
       <Sidebar open={true} onClose={() => {}} />
@@ -74,7 +74,7 @@ export default function User(props: { [x: string]: any }) {
               secondary={getActiveNavbar(routes)}
               {...rest}
             />
-            <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">
+            <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] ml-[20vw] p-2 md:pr-2">
               <Routes>
                 {getRoutes(routes)}
 
