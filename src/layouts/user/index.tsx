@@ -67,14 +67,14 @@ export default function User(props: { [x: string]: any }) {
           className={`mx-[12px] h-full flex-none transition-all md:pe-2 xl:mr-[313px]`}
         >
           {/* Routes */}
-          <div className="h-full">
+          <div className="h-full ml-[20vw]">
             <Navbar
               onOpenSidenav={() => setOpen(true)}
               brandText={currentRoute}
               secondary={getActiveNavbar(routes)}
               {...rest}
             />
-            <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] ml-[20vw] p-2 md:pr-2">
+            <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">
               <Routes>
                 {getRoutes(routes)}
 
