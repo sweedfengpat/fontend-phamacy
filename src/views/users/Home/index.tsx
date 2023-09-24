@@ -114,19 +114,19 @@ function Home() {
               return (
               <React.Fragment key={row.id}>
                 <Grid item xs={3}>
-                  <Card sx={{ maxWidth: 345 }} >
-                    <img src={baseURLstatic + "/" + row.productImage} style={{width: '100%'}} alt="" />
+                  <Card sx={{ maxWidth: 345 }} className='min-h-[600px] !bg-[#0B1437] !text-white border-2 border-white' >
+                    <img src={baseURLstatic + "/" + row.productImage} className='max-h-[230px] w-full object-contain' alt="" />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
                         {row.productName}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" color="text.secondary" className='!text-white'>
                         {row.productDescription}
                       </Typography>
                     </CardContent>
                     <CardActions disableSpacing>
                       <IconButton aria-label="add to cart" sx={{marginRight: '1rem'}} onClick={() => {addCart(row.id, row.productName, 1, row.productAmount, row.productPrice, row.productPrice, row.productImage)}}>
-                        <AddShoppingCartIcon />
+                        <AddShoppingCartIcon color='primary'/>
                       </IconButton>
                       <Typography variant="h5" color="primary">
                         ราคา {row.productPrice} บาท
