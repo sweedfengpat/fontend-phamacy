@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import axios from 'axios';
 import { baseURL, baseURLstatic } from 'lib/url';
+import { log } from 'console';
 
 
 function createData(
@@ -58,6 +59,9 @@ function Home() {
     productTotal: number,
     productImage: string,
     ) => {
+      console.log({id,productName,productAmount,productAmountData,productPrice,productTotal,productImage})
+   console.log(localStorage.getItem("email"))
+
       if (localStorage.getItem("email") !== "" && localStorage.getItem("email") != null && localStorage.getItem("email") !== undefined) {
         let e :any = localStorage.getItem('email');
         let email = atob(e);
@@ -72,7 +76,7 @@ function Home() {
         formData.append('productAmountData', productAmountData.toString());
         console.log(formData);
         axios.post(`${baseURL}/add-cart`, formData).then((response: any) => {
-          window.location.reload();
+          // window.location.reload();
         }
       );
 

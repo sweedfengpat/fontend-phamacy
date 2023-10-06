@@ -40,6 +40,7 @@ function Order() {
           new_rows.push(createData(item.id, item.code, item.total, item.day, item.listAmount, item.listId));
         })
         setRows(new_rows);
+        console.log(new_rows)
       });
       }
     , []);
@@ -66,17 +67,17 @@ function Order() {
   
     return (
       <div>
-          <div style={{textAlign: 'center'}}>
+          <div style={{textAlign: 'center'}} >
               <h1>ตรวจสอบการสั่งซื้อ</h1>
-              <TableContainer component={Paper}>
+              <TableContainer component={Paper} sx={{ marginTop: '10px' , bgcolor:'#1b2559'}}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                      <TableCell align="center">ลำดับ</TableCell>
-                      <TableCell align="center">รหัสการสั่งซื้อ</TableCell>
-                      <TableCell align="center">ราคารวม</TableCell>
-                      <TableCell align="center">วันที่ทำรายการ</TableCell>
-                      <TableCell align="center">สถานะ</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">ลำดับ</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">รหัสการสั่งซื้อ</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">ราคารวม</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">วันที่ทำรายการ</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">สถานะ</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -85,12 +86,12 @@ function Order() {
                         key={row.id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                       >
-                        <TableCell align="center">{index + 1}</TableCell>
-                        <TableCell><Link to={'/admin/order/'+row.id}><SearchIcon color='success'></SearchIcon></Link>{row.code}</TableCell>
-                        <TableCell align="center">{row.price}</TableCell>
-                        <TableCell align="center">{row.date}</TableCell>
+                        <TableCell sx={{color: '#FFFFFF'}} align="center">{index + 1}</TableCell>
+                        <TableCell sx={{color: '#FFFFFF'}} ><Link to={`/admin/order-id?id=${row.id}`}><SearchIcon color='success'></SearchIcon></Link>{row.code}</TableCell>
+                        <TableCell sx={{color: '#FFFFFF'}} align="center">{row.price}</TableCell>
+                        <TableCell sx={{color: '#FFFFFF'}} align="center">{row.date}</TableCell>
 
-                        <TableCell align="center">
+                        <TableCell style={{width: '30%', marginBottom: '10px', height: '30px', color: '#000000'}} sx={{color: '#FFFFFF'}} align="center">
                         <select className='form-control' onChange={(event) => handleChange(row.list_id, row.list_amount, row.id, event)}>
                             <option value="รอตรวจสอบ">รอตรวจสอบ</option>
                             <option value="ชำระแล้ว">ชำระแล้ว</option>
@@ -98,7 +99,7 @@ function Order() {
                         </select>
                         </TableCell>
                       </TableRow>
-                    ))}
+                      ))}
                   </TableBody>
                 </Table>
              </TableContainer>

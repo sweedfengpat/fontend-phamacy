@@ -51,13 +51,13 @@ function History() {
       <div>
           <div style={{textAlign: 'center', marginTop: '20px'}} className='!text-white'>
               <h1>History</h1>
-              <TableContainer component={Paper}>
+              <TableContainer component={Paper} sx={{ marginTop: "10px", bgcolor: "#1b2559" }} >
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                      <TableCell align="center">ลำดับ</TableCell>
-                      <TableCell align="center">รหัสการสั่งซื้อ</TableCell>
-                      <TableCell align="center">วันที่ทำรายการสั่งซื้อ</TableCell>
+                      <TableCell  sx={{ color: "#FFFFFF" }} align="center">ลำดับ</TableCell>
+                      <TableCell  sx={{ color: "#FFFFFF" }} align="center">รหัสการสั่งซื้อ</TableCell>
+                      <TableCell  sx={{ color: "#FFFFFF" }} align="center">วันที่ทำรายการสั่งซื้อ</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -66,9 +66,9 @@ function History() {
                         key={row.id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                       >
-                        <TableCell align="center">{index + 1}</TableCell>
-                        <TableCell align="center"><Link to={'/order/'+row.id}><SearchIcon color='success'></SearchIcon></Link>{row.code}</TableCell>
-                        <TableCell align="center">{row.date}</TableCell>
+                        <TableCell  sx={{ color: "#FFFFFF" }} align="center">{index + 1}</TableCell>
+                        <TableCell  sx={{ color: "#FFFFFF" }} align="center"><Link to= {`/users/order-id-user?id=${row.id}`}><SearchIcon color='success'></SearchIcon></Link>{row.code}</TableCell>
+                        <TableCell  sx={{ color: "#FFFFFF" }} align="center">{row.date}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

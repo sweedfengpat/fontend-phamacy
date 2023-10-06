@@ -18,6 +18,7 @@ import About from "views/admin/about.tsx";
 import Order from "views/admin/Order";
 import Shipping from "views/admin/Shipping";
 import AllPayment from "views/admin/AllPayment";
+import Track from "views/admin/Track";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -45,6 +46,7 @@ import History from "views/users/History"
 import LongdoMap from "views/users/LongdoMap"
 import FollowShipping from "views/users/FollowShippin";
 import Forgot from "views/auth/forgot";
+import OrderID from "views/admin/OrderID/OrderID";
 //import ForgotPassword from "views/admin/ForgotPassword.tsx";
 
 const routes : any = [
@@ -118,6 +120,13 @@ const routes : any = [
     component: <Stockphama />,
   },
   {
+    name: "ใบสั่งซื้อ",
+    layout: "/admin",
+    icon:  <MdStore className="h-6 w-6" />,
+    path: "order-id",
+    component: <OrderID />,
+  },
+  {
     name: "ตรวจสอบการสั่งซื้อ",
     layout: "/admin",
     icon:  <MdStore className="h-6 w-6" />,
@@ -130,6 +139,13 @@ const routes : any = [
     icon:  <MdStore className="h-6 w-6" />,
     path: "Shipping",
     component: <Shipping />,
+  },
+  {
+    name: "ส่งข้อมูลขนส่ง",
+    layout: "/admin",
+    icon:  <MdStore className="h-6 w-6" />,
+    path: "Track",
+    component: <Track />,
   },
   {
     name: "ยอดขายรายเดือน",
@@ -188,7 +204,7 @@ const routes : any = [
     component: <Forgot />,
   },
   {
-    name: "Home",
+    name: "หน้าแรก",
     layout: "/users",
     path: "home",
     icon: <MdLock className="h-6 w-6" />,
@@ -225,7 +241,7 @@ const routes : any = [
   {
     name: "เปลี่ยนรหัสผ่าน",
     layout: "/users",
-    path: "change-ยassword",
+    path: "change-password",
     icon: <MdLock className="h-6 w-6" />,
     component: <ChangePassword />,
   },

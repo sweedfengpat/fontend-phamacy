@@ -83,7 +83,7 @@ function Profile() {
               let hash_password = btoa(p);
               localStorage.setItem("email", hash_email);
               localStorage.setItem("password", hash_password);
-                window.location.href = "/profile";
+                window.location.href = "/users/profile";
             }
         });
       } else {
@@ -198,7 +198,7 @@ function Profile() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 , borderRadius: '20px' }}
-              href="/change-password"
+              href="/users/change-password"
             >
               Change Password
             </Button>

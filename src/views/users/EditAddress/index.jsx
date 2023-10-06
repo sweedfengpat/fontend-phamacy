@@ -70,7 +70,7 @@ function EditAddress() {
       formData.append("password", p);
       axios.post(`${baseURL}/update-address`, formData).then((response) => {
         alert("เปลี่ยนข้อมูลเรียบร้อย");
-        window.location.href = `/address`;
+        window.location.href = `/users/address`;
       });
     } else {
       event.target.value = "รอตรวจสอบ";
@@ -163,18 +163,21 @@ function EditAddress() {
                 
               </Grid>
 
-              <Button
-                variant="contained"
-                color="success"
-                sx={{
-                  marginTop: "10px",
-                  borderRadius: "20px",
-                  textAlign: "center",
-                }}
-                onClick={handleChange}
-              >
+              <Grid item xs={12}>
+                <Button
+                  variant="contained"
+                  color="success"
+                  sx={{
+                    marginTop: "10px",
+                    borderRadius: "20px",
+                    textAlign: "center",
+                  }}
+                  onClick={handleChange}
+                >
                 แก้ไขข้อมูล
-              </Button>
+                </Button>
+              </Grid>
+              
             </Grid>
           </div>
         </div>

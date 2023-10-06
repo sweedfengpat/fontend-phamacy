@@ -14,6 +14,7 @@ import axios from "axios";
 // import { baseURL, baseURLstatic }from '../../url'
 import { baseURL , baseURLstatic } from 'lib/url';
 import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
+import {useLocation} from "react-router-dom"
 
 function createData(
     id,
@@ -44,6 +45,8 @@ function OrderIDUser() {
 
     const componentRef = useRef();
 
+    // const path = location.pathname.split("/").slice(-1)
+
     useEffect(() => {
 
         let e  = localStorage.getItem('email');
@@ -68,10 +71,11 @@ function OrderIDUser() {
         }
 
         
-
-      let id = orderId?.toString() || "";
+      // console.log({path})
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get("id");
       const formData = new FormData();
-      formData.append('id', id);
+      formData.append("id", id?.toString() || "");
       axios.post(`${baseURL}/get-order`, formData).then((response) => {
             setCode(response.data.code);
             setPrice(response.data.listPrice);
@@ -132,15 +136,15 @@ function OrderIDUser() {
                 </div> */}
 
               </div>
-              <TableContainer component={Paper}>
+              <TableContainer component={Paper} sx={{ marginTop: "10px", bgcolor: "#1b2559" }}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                      <TableCell>ลำดับ</TableCell>
-                      <TableCell align="center">ชื่อสินค้า</TableCell>
-                      <TableCell align="center">ราคา</TableCell>
-                      <TableCell align="center">จำนวน</TableCell>
-                        <TableCell align="center">รวม</TableCell>
+                      <TableCell sx={{ color: "#FFFFFF" }}>ลำดับ</TableCell>
+                      <TableCell sx={{ color: "#FFFFFF" }} align="center">ชื่อสินค้า</TableCell>
+                      <TableCell sx={{ color: "#FFFFFF" }} align="center">ราคา</TableCell>
+                      <TableCell sx={{ color: "#FFFFFF" }} align="center">จำนวน</TableCell>
+                        <TableCell sx={{ color: "#FFFFFF" }} align="center">รวม</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -149,18 +153,18 @@ function OrderIDUser() {
                         key={row.id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                       >
-                        <TableCell align="center">{index + 1}</TableCell>
-                        <TableCell align="left" width={"40%"}>{row.code}</TableCell>
-                        <TableCell align="center">{row.price}</TableCell>
-                        <TableCell align="center">{row.amount}</TableCell>
-                        <TableCell align="center">{row.total}</TableCell>
+                        <TableCell sx={{ color: "#FFFFFF" }} align="center">{index + 1}</TableCell>
+                        <TableCell sx={{ color: "#FFFFFF" }} align="left" width={"40%"}>{row.code}</TableCell>
+                        <TableCell sx={{ color: "#FFFFFF" }} align="center">{row.price}</TableCell>
+                        <TableCell sx={{ color: "#FFFFFF" }} align="center">{row.amount}</TableCell>
+                        <TableCell sx={{ color: "#FFFFFF" }} align="center">{row.total}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
                 </Table>
              </TableContainer>
              <div style={{textAlign: 'right', marginTop: '10px'}}>
-                <h4>ราคารวม {total}</h4>
+                <h2 sx={{ color: "#FFFFFF" }} >ราคารวม {total} บาท</h2>
              </div>
           </Container>
           </div>

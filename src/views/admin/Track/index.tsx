@@ -79,7 +79,12 @@ function Track() {
                 />
                 <br />
                 <br />
-                <Button variant="contained" type='submit' >ส่งข้อมูล</Button>
+                
+                <Button type="submit"
+                fullWidth
+                variant="contained"
+                color='success'
+                sx={{marginTop: '10px' , borderRadius: '20px' , marginBottom: '10px'}} >ส่งข้อมูล</Button>
 
               </form>
           </div>

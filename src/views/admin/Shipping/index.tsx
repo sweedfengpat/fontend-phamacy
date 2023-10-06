@@ -11,6 +11,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { baseURL } from 'lib/url';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import SendIcon from '@mui/icons-material/Send';
 
 
 function createData(
@@ -87,16 +89,16 @@ function Shipping() {
       <div>
           <div style={{textAlign: 'center'}}>
               <h1>ตรวจสอบการส่งสินค้า</h1>
-              <TableContainer component={Paper}>
+              <TableContainer component={Paper} sx={{ marginTop: '10px' , bgcolor:'#1b2559'}}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                    <TableCell align="center">ลำดับ</TableCell>
-                      <TableCell>รหัสการสั่งซื้อ</TableCell>
-                      <TableCell align="center">วันที่ทำรายการ</TableCell>
-                      <TableCell align="center">สถานะ (จัดส่งแล้ว)</TableCell>
-                      <TableCell align="center">เปลี่ยนสถานะ</TableCell>
-                      <TableCell align="center">ส่งข้อมูลขนส่งพัสดุ</TableCell>
+                    <TableCell sx={{color: '#FFFFFF'}} align="center">ลำดับ</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">รหัสการสั่งซื้อ</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">วันที่ทำรายการ</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">สถานะ (จัดส่งแล้ว)</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">เปลี่ยนสถานะ</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">ส่งข้อมูลขนส่งพัสดุ</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -105,17 +107,17 @@ function Shipping() {
                         key={row.id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                       >
-                        <TableCell align="center">{index + 1}</TableCell>
-                        <TableCell><Link to={'/admin/order/'+row.id}><SearchIcon color='success'></SearchIcon></Link>{row.code}</TableCell>
-                        <TableCell align="center">{row.date}</TableCell>
-                        <TableCell align="center">
+                        <TableCell sx={{color: '#FFFFFF'}} align="center">{index + 1}</TableCell>
+                        <TableCell sx={{color: '#FFFFFF'}}><Link to={`/admin/order-id?id=${row.id}`}><SearchIcon color='success'></SearchIcon></Link>{row.code}</TableCell>
+                        <TableCell sx={{color: '#FFFFFF'}} align="center">{row.date}</TableCell>
+                        <TableCell sx={{color: '#FFFFFF'}} align="center">
                         <input type="text" className='form-control' value={row.status} onChange={(event) => handleChange(row.id, event)} />
                         </TableCell>
-                        <TableCell align="center">
-                        <button className='btn btn-primary' onClick={() => change(row.id)}>เปลี่ยนสถานะ</button>
+                        <TableCell sx={{color: '#FFFFFF'}} align="center">
+                        <button className='btn btn-primary' onClick={() => change(row.id)}><AutorenewIcon /></button>
                         </TableCell>
-                        <TableCell align="center">
-                          {row.track === null ? <Link to={'/admin/track/'+row.id}><button className='btn btn-primary'>ส่งข้อมูล</button></Link> : <button className='btn btn-primary' disabled>ส่งข้อมูล</button>}
+                        <TableCell sx={{color: '#FFFFFF'}} align="center">
+                          {row.track === null ? <Link to={'/admin/Track'}><button className='btn btn-primary'><SendIcon /></button></Link> : <button className='btn btn-primary' disabled>ส่งข้อมูล</button>}
                         </TableCell>
 
                       </TableRow>

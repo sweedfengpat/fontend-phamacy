@@ -147,10 +147,11 @@ function About() {
                 }
             })()}
 
-              <Box sx={{ mt: 5 }}>
+
+              <Box sx={{ mt: 5 }}  >
                 <img src={baseURLstatic + '/' + logo} width={100} height={100} alt="" />
-                <form onSubmit={handleFileChange2}>
-              <Grid item xs={12}>
+                <form onSubmit={handleFileChange2} >
+              <Grid item xs={12} >
                 <FilledInput 
                 type='file'
                   onChange={handleFileChange}
@@ -162,7 +163,8 @@ function About() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                color='success'
+                sx={{marginTop: '10px' , borderRadius: '20px' , marginBottom: '10px'}}
               >
               แก้ไขรูป
               </Button>
@@ -170,45 +172,65 @@ function About() {
               </Box>
 
 
+
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={12}>
-                <TextField
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    fullWidth
-                    id="name"
-                    label="ชื่อร้าน"
-                    name="name"
-                    autoComplete="name"
-                  />
+                  <div className="cto-InputAddress1">
+                    <TextField
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        fullWidth
+                        id="name"
+                        label="ชื่อร้าน"
+                        name="name"
+                        autoComplete="name"
+                      />
+                    </div>
                 </Grid>
+
                 <Grid item xs={12} sm={12}>
-                  <TextField
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    required
-                    fullWidth
-                    id="phone"
-                    label="เบอร์โทร"
-                    name="phone"
-                    autoComplete="phone"
-                  />
+                  <div className="cto-InputAddress1">
+                    <TextField
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      required
+                      fullWidth
+                      id="phone"
+                      label="เบอร์โทร"
+                      name="phone"
+                      autoComplete="phone"
+                    />
+                  </div>
                 </Grid>
              </Grid>
 
-            <div style={{width: "100%" , display:"Grid" , justifyContent:"center"}}>
+            <div style={{width: "100%" , display:"Grid" , justifyContent:"center"}} >
           <Grid container spacing={2} width={500} mt={5} mb={5} >
 
             <Grid item xs={6} >
-              <TextField style={{minWidth: "200px" , minHeight: "50px"}} id="outlined-basic" label="ชื่อที่อยู่" variant="outlined" value={name} onChange={(e) => setName(e.target.value)} />
+              <div className="cto-InputAddress1">
+                <TextField style={{minWidth: "200px" , minHeight: "50px"}}
+                id="outlined-basic"
+                label="ชื่อที่อยู่"
+                variant="outlined"
+                value={name} onChange={(e) => setName(e.target.value)} />
+              </div> 
             </Grid>
 
             <Grid item xs={6} >
-              <TextField style={{minWidth: "200px" , minHeight: "50px"}} id="outlined-basic" label="ที่อยู่" variant="outlined" value={address} onChange={(e) => setAddress(e.target.value)} />
+              <div className="cto-InputAddress1">
+                <TextField style={{minWidth: "200px" , minHeight: "50px"}}
+                id="outlined-basic"
+                label="ที่อยู่"
+                variant="outlined"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)} />
+               </div> 
             </Grid>
 
-            <Grid item xs={6} >
+
+            <Grid item xs={6} className='!text-white'>
             แขวง / ตำบล
             <InputAddress
               style={{minWidth: "200px" , minHeight: "50px"}}
@@ -219,7 +241,7 @@ function About() {
             />
             </Grid>
 
-            <Grid item xs={6} >
+            <Grid item xs={6} className='!text-white'>
             เขต / อำเภอ
             <InputAddress
               style={{minWidth: "200px" , minHeight: "50px"}}
@@ -230,7 +252,7 @@ function About() {
             />
             </Grid>
 
-            <Grid item xs={6} >
+            <Grid item xs={6} className='!text-white'>
             จังหวัด
             <InputAddress
               style={{minWidth: "200px" , minHeight: "50px"}}
@@ -241,7 +263,7 @@ function About() {
             /> 
             </Grid>
 
-            <Grid item xs={6} >
+            <Grid item xs={6} className='!text-white'>
             รหัสไปรษณีย์
             <InputAddress
               style={{minWidth: "200px" , minHeight: "50px"}}
@@ -261,7 +283,8 @@ function About() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{marginTop: '10px' , borderRadius: '20px' , marginBottom: '10px' }}
+                color='success'
               >
               แก้ไข
             </Button>

@@ -29,16 +29,16 @@ function FollowShipping() {
     return (
         <div style={{marginTop: '10px', padding: '20px'}} className='!text-white'>
             <h1 style={{textAlign: 'center'}}>ติดตามสินค้า</h1>
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ marginTop: "10px", bgcolor: "#1b2559" }}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-              <TableCell>รหัสการสั่งซื้อสินค้า</TableCell>
-                <TableCell>จำนวน</TableCell>
-                <TableCell align="right">ราคารวม</TableCell>
-                <TableCell align="right">สถานะ</TableCell>
-                <TableCell align="right">วันที่ทำรายการ</TableCell>
-                <TableCell align="right">เลข ems</TableCell>
+              <TableCell sx={{ color: "#FFFFFF" }} align="center">รหัสการสั่งซื้อสินค้า</TableCell >
+                <TableCell sx={{ color: "#FFFFFF" }} align="center">จำนวน</TableCell>
+                <TableCell sx={{ color: "#FFFFFF" }} align="right">ราคารวม</TableCell>
+                <TableCell sx={{ color: "#FFFFFF" }} align="right">สถานะ</TableCell>
+                <TableCell sx={{ color: "#FFFFFF" }} align="right">วันที่ทำรายการ</TableCell>
+                <TableCell sx={{ color: "#FFFFFF" }} align="right">เลข ems</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -47,14 +47,14 @@ function FollowShipping() {
                   key={row.name}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                  <TableCell>{row.calories}</TableCell>
-                  <TableCell component="th" scope="row">
+                  <TableCell sx={{ color: "#FFFFFF" }} align="center">{row.calories}</TableCell>
+                  <TableCell  sx={{ color: "#FFFFFF" }} align="center" component="th" scope="row">
                     {row.name}
                   </TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
+                  <TableCell sx={{ color: "#FFFFFF" }} align="right">{row.fat}</TableCell>
+                  <TableCell sx={{ color: "#FFFFFF" }} align="right">{row.carbs}</TableCell>
+                  <TableCell sx={{ color: "#FFFFFF" }} align="right">{row.carbs}</TableCell>
+                  <TableCell sx={{ color: "#FFFFFF" }} align="right">{row.carbs}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

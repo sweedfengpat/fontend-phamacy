@@ -68,7 +68,7 @@ function ChangePassword() {
       post_data.newPassword === post_data.newPassword1
     ) {
       axios
-        .post(`${baseURL}/change-password`, formData)
+        .post(`${baseURL}/users/change-password`, formData)
         .then((response: any) => {
           console.log(response);
           if (response.data.code === 200) {

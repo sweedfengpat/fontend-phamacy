@@ -80,14 +80,14 @@ function AllPayment() {
               {/* month and year FilledInput */} 
               <input type="month" id="bdaymonth" name="bdaymonth" value={month} onChange={(e) => setMonth(e.target.value)} />
               
-              <TableContainer component={Paper}>
+              <TableContainer component={Paper} sx={{ marginTop: '10px' , bgcolor:'#1b2559'}}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                    <TableCell align="center">ลำดับ</TableCell>
-                      <TableCell>รหัสการสั่งซื้อ</TableCell>
-                      <TableCell align="center">จำนวน</TableCell>
-                      <TableCell align="center">ราคา</TableCell>
+                    <TableCell sx={{color: '#FFFFFF'}} align="center">ลำดับ</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">รหัสการสั่งซื้อ</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">จำนวน</TableCell>
+                      <TableCell sx={{color: '#FFFFFF'}} align="center">ราคา</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -96,10 +96,10 @@ function AllPayment() {
                         key={row.id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                       >
-                        <TableCell align="center">{index + 1}</TableCell>
-                        <TableCell><Link to={'/admin/order/'+row.id}><SearchIcon color='success'></SearchIcon></Link>{row.code}</TableCell>
-                        <TableCell align="center">{row.amount}</TableCell>
-                        <TableCell align="center">{row.total}</TableCell>
+                        <TableCell sx={{color: '#FFFFFF'}} align="center">{index + 1}</TableCell>
+                        <TableCell sx={{color: '#FFFFFF'}}><Link to={`/admin/order-id?id=${row.id}`}><SearchIcon color='success'></SearchIcon></Link>{row.code}</TableCell>
+                        <TableCell sx={{color: '#FFFFFF'}} align="center">{row.amount}</TableCell>
+                        <TableCell sx={{color: '#FFFFFF'}} align="center">{row.total}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -107,7 +107,7 @@ function AllPayment() {
              </TableContainer>
 
              <div style={{marginTop: '10px'}}>
-                <h4>ราคารวม {total}</h4>
+                <h2 style={{color: 'FFFFFF'}}>ราคารวม {total}</h2>
              </div>
           </div>
       </div>

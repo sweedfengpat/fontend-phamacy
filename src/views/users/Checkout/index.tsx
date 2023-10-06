@@ -130,18 +130,18 @@ export default function CheckOut() {
   return (
     <div style={{marginTop: '10px', padding: '20px'}} className='!text-white'>
         <h1 style={{textAlign: 'center'}} >ชำระเงิน</h1>
-<TableContainer component={Paper}>
+<TableContainer component={Paper} sx={{ marginTop: '10px' , bgcolor:'#1b2559'}}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-          <TableCell>รูป</TableCell>
-            <TableCell>สินค้า</TableCell>
-            <TableCell align="center">ราคา</TableCell>
-            <TableCell align="center">จำนวน</TableCell>
-            <TableCell align="center">ยอดรวม</TableCell>
+          <TableCell sx={{color: '#FFFFFF'}} align="center">รูป</TableCell>
+            <TableCell sx={{color: '#FFFFFF'}} align="center" >สินค้า</TableCell>
+            <TableCell  sx={{color: '#FFFFFF'}} align="center">ราคา</TableCell>
+            <TableCell  sx={{color: '#FFFFFF'}} align="center">จำนวน</TableCell>
+            <TableCell  sx={{color: '#FFFFFF'}} align="center">ยอดรวม</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody >
           {rows.map((row: any) => (
             <ItemCart key={row.id} id={row.id} productName={row.productName} productAmount={row.productAmount} productPrice={row.productPrice} productTotal={row.productPrice * row.productAmount} productImage={row.productImage} productAmountData={row.productAmountData} />
           ))}
@@ -155,7 +155,7 @@ export default function CheckOut() {
     <hr />
     <div style={{marginTop: '10px'}}>
         <h1>เลือกที่อยู่จัดส่ง</h1>
-        <select name="" className='form-control' onChange={(e) => {setAddress(e.target.value)}}>
+        <select style={{width: '30%', marginBottom: '10px', height: '30px', color: '#000000'}} name="" className='form-control' onChange={(e) => {setAddress(e.target.value)}}>
           <option value=""></option>
           {addressList.map((item: any) => {
             return <option value={item.address}>{item.name}</option>
@@ -171,6 +171,9 @@ export default function CheckOut() {
             defaultValue={address}
             variant="outlined"
             sx={{width: '100%', marginBottom: '10px'}}
+            inputProps={{
+              style: {color: '#FFFFFF', border: '2px', borderColor: '#FFFFFF'},
+           }}
             value={address}
             onChange={(e) => setAddress(e.target.value)} />
             <Button variant="contained" onClick={() => {setAddress('')}}>Clear</Button>
@@ -216,7 +219,7 @@ export default function CheckOut() {
       formData.append('productImage', slipImage!);
       axios.post(`${baseURL}/add-order`, formData).then((response: any) => {
           alert('สั่งซื้อสำเร็จ');
-          window.location.href = '/cart';
+          // window.location.href = '/users/cart';
       });
     }}>สั่งซื้อ</Button>
     </div>
