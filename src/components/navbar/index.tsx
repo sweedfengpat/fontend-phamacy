@@ -19,6 +19,7 @@ const Navbar = (props: {
 }) => {
   const { onOpenSidenav, brandText } = props;
   const [darkmode, setDarkmode] = React.useState(false);
+  const isLogin = localStorage.getItem("email") ? true : false;
 
   return (
     <nav className="sticky top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#0b14374d]">
@@ -59,48 +60,53 @@ const Navbar = (props: {
         >
           <FiAlignJustify className="h-5 w-5" />
         </span>
+        {isLogin ? (
+           <Dropdown
+           button={
+             <img
+               className="h-10 w-10 rounded-full"
+               src={avatar}
+               alt="Elon Musk"
+             />
+           }
+           children={
+             <div className="flex h-48 w-56 flex-col justify-start rounded-[20px] bg-white bg-cover bg-no-repeat shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
+               <div className="mt-3 ml-4">
+                 <div className="flex items-center gap-2">
+                   <p className="text-sm font-bold text-navy-700 dark:text-white text-xl">
+                     👋 Hey, {atob(localStorage.getItem("email"))}
+                   </p>{" "}
+                 </div>
+               </div>
+               <div className="mt-3 h-px w-full bg-gray-200 dark:bg-white/20 " />
+ 
+               <div className="mt-3 ml-4 flex flex-col">
+                 {/* <a
+                   href="/admin/profile"
+                   className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
+                 >
+                   Profile Settings
+                 </a> */}
+                 <a
+                   href=" "
+                   className="mt-3 text-lg font-medium text-red-500 hover:text-red-500"
+                   onClick={() => {
+                     localStorage.removeItem("email");
+                     localStorage.removeItem("password");
+                   }}
+                 >
+                   Log Out
+                 </a>
+               </div>
+             </div>
+           }
+           classNames={"py-2 top-8 -left-[180px] w-max"}
+         />
+        ):(<div>
 
-        <Dropdown
-          button={
-            <img
-              className="h-10 w-10 rounded-full"
-              src={avatar}
-              alt="Elon Musk"
-            />
-          }
-          children={
-            <div className="flex h-48 w-56 flex-col justify-start rounded-[20px] bg-white bg-cover bg-no-repeat shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
-              <div className="mt-3 ml-4">
-                <div className="flex items-center gap-2">
-                  <p className="text-sm font-bold text-navy-700 dark:text-white text-xl">
-                    👋 Hey, {atob(localStorage.getItem("email"))}
-                  </p>{" "}
-                </div>
-              </div>
-              <div className="mt-3 h-px w-full bg-gray-200 dark:bg-white/20 " />
+        </div>)}
 
-              <div className="mt-3 ml-4 flex flex-col">
-                {/* <a
-                  href="/admin/profile"
-                  className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
-                >
-                  Profile Settings
-                </a> */}
-                <a
-                  href=" "
-                  className="mt-3 text-lg font-medium text-red-500 hover:text-red-500"
-                  onClick={() => {
-                    localStorage.removeItem("email");
-                    localStorage.removeItem("password");
-                  }}
-                >
-                  Log Out
-                </a>
-              </div>
-            </div>
-          }
-          classNames={"py-2 top-8 -left-[180px] w-max"}
-        />
+       
       </div>
     </nav>
   );

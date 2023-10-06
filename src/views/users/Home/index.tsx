@@ -108,7 +108,7 @@ function Home() {
                 <option value="">เลือกหมวดหมู่</option>
                 {productType.map((item: any) => {
                     return (
-                        <option value={item}>{item}</option>
+                        <option value={item} key= {item + "option"}>{item}</option>
                     )
                 })}
             </select>
@@ -116,7 +116,7 @@ function Home() {
       <Grid container spacing={2} sx={{marginTop: '10px'}}>
             {rows.map((row: any) => {
               return (
-              <React.Fragment key={row.id}>
+              <React.Fragment key={row.id + "product"}>
                 <Grid item xs={3}>
                   <Card sx={{ maxWidth: 345 }} className='min-h-[600px] !bg-[#0B1437] !text-white border-2 border-white' >
                     <img src={baseURLstatic + "/" + row.productImage} className='max-h-[230px] w-full object-contain' alt="" />

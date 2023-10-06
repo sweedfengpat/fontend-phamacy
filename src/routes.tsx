@@ -31,7 +31,7 @@ import {
   MdPerson,
   MdLock,
   MdCategory,
-  MdStore
+  MdStore,
 } from "react-icons/md";
 import Address from "views/users/Address";
 import ChangePassword from "views/auth/ChangePassword";
@@ -49,21 +49,8 @@ import Forgot from "views/auth/forgot";
 import OrderID from "views/admin/OrderID/OrderID";
 //import ForgotPassword from "views/admin/ForgotPassword.tsx";
 
-const routes : any = [
-  // {
-  //   name: "Main Dashboard",
-  //   layout: "/admin",
-  //   path: "default",
-  //   icon: <MdHome className="h-6 w-6" />,
-  //   component: <MainDashboard />,
-  // },
-  // {
-  //   name: "Main Dashboard",
-  //   layout: "/user",
-  //   path: "default",
-  //   icon: <MdHome className="h-6 w-6" />,
-  //   component: <MainDashboard />,
-  // },
+
+export const routes : RoutesType[] = [
   {
     name: "คลังสินค้า",
     layout: "/admin",
@@ -71,40 +58,6 @@ const routes : any = [
     icon: <MdHome className="h-6 w-6" />,
     component: <Product />,
   },
-  // {
-  //   name: "NFT Marketplace",
-  //   layout: "/admin",
-  //   path: "nft-marketplace",
-  //   icon: <MdOutlineShoppingCart className="h-6 w-6" />,
-  //   component: <NFTMarketplace />,
-  //   secondary: true,
-  // },
-  // {
-  //   name: "Data Tables",
-  //   layout: "/admin",
-  //   icon: <MdBarChart className="h-6 w-6" />,
-  //   path: "data-tables",
-  //   component: <DataTables />,
-  // },
-  // {
-  //   name: "การเงิน",
-  //   layout: "/admin",
-  //   icon: <MdBarChart className="h-6 w-6" />,
-  //   path: "finace",
-  //   component: <Finace />,
-  // },{
-  //   name: "การขาย",
-  //   layout: "/admin",
-  //   icon: <MdBarChart className="h-6 w-6" />,
-  //   path: "sell",
-  //   component: <Sell />,
-  // },{
-  //   name: "รายการสั่งซื้อ",
-  //   layout: "/admin",
-  //   icon:  <MdOutlineShoppingCart className="h-6 w-6" />,
-  //   path: "selllist",
-  //   component: <Selllist />,
-  // },
   {
     name: "ประเภทยาและสินต้า",
     layout: "/admin",
@@ -125,6 +78,7 @@ const routes : any = [
     icon:  <MdStore className="h-6 w-6" />,
     path: "order-id",
     component: <OrderID />,
+    showSidebar: false,
   },
   {
     name: "ตรวจสอบการสั่งซื้อ",
@@ -146,6 +100,7 @@ const routes : any = [
     icon:  <MdStore className="h-6 w-6" />,
     path: "Track",
     component: <Track />,
+    showSidebar: false,
   },
   {
     name: "ยอดขายรายเดือน",
@@ -161,27 +116,6 @@ const routes : any = [
     path: "about",
     component: <About />,
   },
-  // {
-  //   name: "NFT Marketplace",
-  //   layout: "/admin",
-  //   path: "nft-marketplace",
-  //   icon: <MdOutlineShoppingCart className="h-6 w-6" />,
-  //   component: <NFTMarketplace />,
-  // },
-  // {
-  //   name: "Profile",
-  //   layout: "/admin",
-  //   path: "profile",
-  //   icon: <MdPerson className="h-6 w-6" />,
-  //   component: <Profile />,
-  // },
-  // {
-  //   name: "Profile",
-  //   layout: "/user",
-  //   path: "profile",
-  //   icon: <MdPerson className="h-6 w-6" />,
-  //   component: <Profile />,
-  // },
   {
     name: "Sign In",
     layout: "/auth",
@@ -223,6 +157,7 @@ const routes : any = [
     path: "change-password",
     icon: <MdLock className="h-6 w-6" />,
     component: <ChangePassword />,
+    showSidebar: false,
   },
   {
     name: "ชำระเงิน",
@@ -230,6 +165,7 @@ const routes : any = [
     path: "checkout",
     icon: <MdLock className="h-6 w-6" />,
     component: <CheckOut />,
+    showSidebar: false,
   },
   {
     name: "แก้ไขที่อยู่",
@@ -237,6 +173,7 @@ const routes : any = [
     path: "edit-address",
     icon: <MdLock className="h-6 w-6" />,
     component: <EditAddress />,
+    showSidebar: false,
   },
   {
     name: "เปลี่ยนรหัสผ่าน",
@@ -265,6 +202,7 @@ const routes : any = [
     path: "order-id-user",
     icon: <MdLock className="h-6 w-6" />,
    component: <OrderIDUser />,
+   showSidebar: false,
   },
   {
     name: "Profile",
@@ -286,22 +224,7 @@ const routes : any = [
     path: "follow-shiping",
     icon: <MdLock className="h-6 w-6" />,
    component: <FollowShipping />,
+   showSidebar: false,
   },
- 
-  // {
-  //   name: "Register",
-  //   layout: "/users",
-  //   path: "register",
-  //   icon: <MdLock className="h-6 w-6" />,
-  //  component: <Register />,
-  // },
-  
-  // {
-  //   name: "RTL Admin",
-  //   layout: "/rtl",
-  //   path: "rtl",
-  //   icon: <MdHome className="h-6 w-6" />,
-  //   component: <RTLDefault />,
-  // },
 ];
 export default routes;

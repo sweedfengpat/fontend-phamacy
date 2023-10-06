@@ -27,6 +27,7 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
       const adminRoute = routes.filter((route) => route.layout === "/admin");
       routes = adminRoute
     }
+    routes = routes.filter((route) => route?.showSidebar !== false);
     return routes.map((route, index) => {
       if (
         route.layout === "/admin" ||
