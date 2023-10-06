@@ -26,12 +26,18 @@ import SignIn from "views/auth/SignIn";
 // Icon Imports
 import {
   MdHome,
-  MdOutlineShoppingCart,
-  MdBarChart,
-  MdPerson,
+  MdOutlineReorder,
+  MdOutlinePayments,
+  MdHomeFilled,
   MdLock,
   MdCategory,
   MdStore,
+  MdPreview,
+  MdOutlineShoppingBasket,
+  MdDeliveryDining,
+  MdHistory,
+  MdAddHomeWork,
+  MdSettingsSuggest
 } from "react-icons/md";
 import Address from "views/users/Address";
 import ChangePassword from "views/auth/ChangePassword";
@@ -52,23 +58,36 @@ import OrderID from "views/admin/OrderID/OrderID";
 
 export const routes : RoutesType[] = [
   {
-    name: "คลังสินค้า",
+    name: "หน้าแรก",
     layout: "/admin",
-    path: "product",
-    icon: <MdHome className="h-6 w-6" />,
-    component: <Product />,
-  },
+    path: "home",
+    icon: <MdHomeFilled className="h-6 w-6" />,
+    component: <Home />,
+  },  
   {
     name: "ประเภทยาและสินต้า",
     layout: "/admin",
     icon:  <MdCategory className="h-6 w-6" />,
     path:"category",
     component: <Category/>
+  },{
+    name: "คลังสินค้า",
+    layout: "/admin",
+    path: "product",
+    icon: <MdOutlineReorder className="h-6 w-6" />,
+    component: <Product />,
   },
+  // {
+  //   name: "ประเภทยาและสินต้า",
+  //   layout: "/admin",
+  //   icon:  <MdCategory className="h-6 w-6" />,
+  //   path:"category",
+  //   component: <Category/>
+  // },
   {
     name: "คลังยา",
     layout: "/admin",
-    icon:  <MdStore className="h-6 w-6" />,
+    icon:  <MdOutlineReorder className="h-6 w-6" />,
     path: "stockphama",
     component: <Stockphama />,
   },
@@ -83,14 +102,14 @@ export const routes : RoutesType[] = [
   {
     name: "ตรวจสอบการสั่งซื้อ",
     layout: "/admin",
-    icon:  <MdStore className="h-6 w-6" />,
+    icon:  <MdPreview className="h-6 w-6" />,
     path: "order",
     component: <Order />,
   },
   {
     name: "ตรวจสอบการส่งสินค้า",
     layout: "/admin",
-    icon:  <MdStore className="h-6 w-6" />,
+    icon:  <MdDeliveryDining className="h-6 w-6" />,
     path: "Shipping",
     component: <Shipping />,
   },
@@ -105,7 +124,7 @@ export const routes : RoutesType[] = [
   {
     name: "ยอดขายรายเดือน",
     layout: "/admin",
-    icon:  <MdStore className="h-6 w-6" />,
+    icon:  <MdOutlinePayments className="h-6 w-6" />,
     path: "AllPayment",
     component: <AllPayment />,
   },
@@ -141,14 +160,28 @@ export const routes : RoutesType[] = [
     name: "หน้าแรก",
     layout: "/users",
     path: "home",
-    icon: <MdLock className="h-6 w-6" />,
+    icon: <MdHomeFilled className="h-6 w-6" />,
     component: <Home />,
+  },
+  {
+    name: "ตระกร้า",
+    layout: "/users",
+    path: "cart",
+    icon: <MdOutlineShoppingBasket className="h-6 w-6" />,
+   component: <Cart />,
+  },
+  {
+    name: "ประวัติ",
+    layout: "/users",
+    path: "history",
+    icon: <MdHistory className="h-6 w-6" />,
+    component: <History />,
   },
   {
     name: "จัดการที่อยู่",
     layout: "/users",
     path: "address",
-    icon: <MdLock className="h-6 w-6" />,
+    icon: <MdAddHomeWork className="h-6 w-6" />,
     component: <Address />,
   },
   {
@@ -181,14 +214,15 @@ export const routes : RoutesType[] = [
     path: "change-password",
     icon: <MdLock className="h-6 w-6" />,
     component: <ChangePassword />,
+    showSidebar: false,
   },
-  {
-    name: "ประวัติ",
-    layout: "/users",
-    path: "history",
-    icon: <MdLock className="h-6 w-6" />,
-    component: <History />,
-  },
+  // {
+  //   name: "ประวัติ",
+  //   layout: "/users",
+  //   path: "history",
+  //   icon: <MdLock className="h-6 w-6" />,
+  //   component: <History />,
+  // },
   // {
   //   name: "แผนที่",
   //   layout: "/users",
@@ -208,16 +242,16 @@ export const routes : RoutesType[] = [
     name: "Profile",
     layout: "/users",
     path: "profile",
-    icon: <MdLock className="h-6 w-6" />,
+    icon: <MdSettingsSuggest className="h-6 w-6" />,
    component: <Profile />,
   },
-  {
-    name: "ตระกร้า",
-    layout: "/users",
-    path: "cart",
-    icon: <MdLock className="h-6 w-6" />,
-   component: <Cart />,
-  },
+  // {
+  //   name: "ตระกร้า",
+  //   layout: "/users",
+  //   path: "cart",
+  //   icon: <MdLock className="h-6 w-6" />,
+  //  component: <Cart />,
+  // },
   {
     name: "ติดตามสินค้า",
     layout: "/users",

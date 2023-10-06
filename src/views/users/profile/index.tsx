@@ -167,7 +167,7 @@ function Profile() {
                   hidden
                 />
               </Grid>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
               <TextField
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
@@ -180,7 +180,7 @@ function Profile() {
                   autoComplete="new-address"
                   hidden
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12}>
               </Grid>
             </Grid>

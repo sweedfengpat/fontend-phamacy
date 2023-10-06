@@ -115,7 +115,8 @@ function EditAddress() {
 
               <Grid item xs={6}>
                 แขวง / ตำบล
-                <div className="cto-InputAddress"><InputAddress
+                <div className="cto-InputAddress">
+                  <InputAddress
                   style={{ minWidth: "200px", minHeight: "50px" }}
                   address="subdistrict"
                   value={subdistrict}

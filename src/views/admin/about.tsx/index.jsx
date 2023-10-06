@@ -248,46 +248,50 @@ function About() {
 
                 <Grid item xs={6} className="!text-white">
                   แขวง / ตำบล
+                  <div className="cto-InputAddress">
                   <InputAddress
                     style={{ minWidth: "200px", minHeight: "50px" }}
                     address="subdistrict"
                     value={subdistrict}
                     onChange={(e) => setSubdistrict(e.target.value)}
                     onSelect={(value) => onSelect(value)}
-                  />
+                  /></div>
                 </Grid>
 
                 <Grid item xs={6} className="!text-white">
                   เขต / อำเภอ
+                  <div className="cto-InputAddress">
                   <InputAddress
                     style={{ minWidth: "200px", minHeight: "50px" }}
                     address="district"
                     value={district}
                     onChange={(e) => setDistrict(e.target.value)}
                     onSelect={(value) => onSelect(value)}
-                  />
+                  /></div>
                 </Grid>
 
                 <Grid item xs={6} className="!text-white">
                   จังหวัด
+                  <div className="cto-InputAddress">
                   <InputAddress
                     style={{ minWidth: "200px", minHeight: "50px" }}
                     address="province"
                     value={province}
                     onChange={(e) => setProvince(e.target.value)}
                     onSelect={(value) => onSelect(value)}
-                  />
+                  /></div>
                 </Grid>
 
                 <Grid item xs={6} className="!text-white">
                   รหัสไปรษณีย์
+                  <div className="cto-InputAddress">
                   <InputAddress
                     style={{ minWidth: "200px", minHeight: "50px" }}
                     address="zipcode"
                     value={zipcode}
                     onChange={(e) => setZipcode(e.target.value)}
                     onSelect={(value) => onSelect(value)}
-                  />
+                  /></div>
                 </Grid>
                 <Button
                   type="submit"
