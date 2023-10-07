@@ -76,7 +76,7 @@ function AddProduct() {
                           'แก้ไขข้อมูลสำเร็จ',
                   });
                   setTimeout(() => {
-                    //   window.location.href = '/admin/product?id=' + id;
+                      window.location.href = '/admin/product?id=' + id;
                   }, 2000);
               } else if (response.data.code === 500) {
                 notification.error({
