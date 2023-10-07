@@ -33,7 +33,6 @@ function EditAddress() {
       let data = response.data;
       setName(data.name);
       const splitAddress = data?.address?.split(" ");
-      console.log("splitAddress", splitAddress);
       if (splitAddress) {
         setProvince(splitAddress[6]);
         setZipcode(splitAddress[7]);

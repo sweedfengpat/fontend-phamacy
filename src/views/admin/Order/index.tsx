@@ -40,7 +40,7 @@ function Order() {
           new_rows.push(createData(item.id, item.code, item.total, item.day, item.listAmount, item.listId));
         })
         setRows(new_rows);
-        console.log(new_rows)
+
       });
       }
     , []);
@@ -48,7 +48,7 @@ function Order() {
 
 
     const handleChange = (list_amount:string, list_id:string, id: number, event: any) => {
-        console.log(event.target.value);
+
         let text = "คุณต้องการเปลี่ยนสถานะใช่หรือไม่";
         if (window.confirm(text)) {
             const formData = new FormData();

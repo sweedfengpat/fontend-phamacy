@@ -72,7 +72,6 @@ export default function Cart() {
     formData.append("id", id.toString());
     formData.append("email", email);
     axios.post(`${baseURL}/delete-cart`, formData).then((response: any) => {
-      console.log(response.data);
       return window.location.reload();
     });
   };

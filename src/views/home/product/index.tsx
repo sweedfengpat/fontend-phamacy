@@ -24,7 +24,7 @@ function createData(
 }
 
 
-function Home() {
+function Product() {
 
   const [rows, setRows] = React.useState<any>([]);
   const [productType, setProductType] = React.useState<any>([]);
@@ -49,36 +49,6 @@ function Home() {
     });
     }
   , []);
-
-  const addCart = (
-    id: number, 
-    productName: string,
-    productAmount: number,
-    productAmountData: number,
-    productPrice: number,
-    productTotal: number,
-    productImage: string,
-    ) => {
-
-      if (localStorage.getItem("email") !== "" && localStorage.getItem("email") != null && localStorage.getItem("email") !== undefined) {
-        let e :any = localStorage.getItem('email');
-        let email = atob(e);
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('productID', id.toString());
-        formData.append('productName', productName);
-        formData.append('productAmount', productAmount.toString());
-        formData.append('productPrice', productPrice.toString());
-        formData.append('productTotal', productTotal.toString());
-        formData.append('productImage', productImage);
-        formData.append('productAmountData', productAmountData.toString());
-        axios.post(`${baseURL}/add-cart`, formData).then((response: any) => {
-          // window.location.reload();
-        }
-      );
-
-    }
-  }
 
 
   const filterProduct = (e: any) => {
@@ -126,7 +96,9 @@ function Home() {
                       </Typography>
                     </CardContent>
                     <CardActions disableSpacing>
-                      <IconButton aria-label="add to cart" sx={{marginRight: '1rem'}} onClick={() => {addCart(row.id, row.productName, 1, row.productAmount, row.productPrice, row.productPrice, row.productImage)}}>
+                      <IconButton aria-label="add to cart" sx={{marginRight: '1rem'}} onClick={() => {
+                        window.location.href = '/auth/sign-in';
+                      }}>
                         <AddShoppingCartIcon color='primary'/>
                       </IconButton>
                       <Typography variant="h5" color="primary">
@@ -145,4 +117,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Product;

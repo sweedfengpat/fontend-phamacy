@@ -75,7 +75,6 @@ function Address() {
       const formData = new FormData();
       formData.append('id', id.toString());
       axios.post(`${baseURL}/delete-address`, formData).then((response) => {
-        console.log(response.data);
         window.location.reload();
       });
     }
@@ -99,7 +98,7 @@ function Address() {
     formData.append('email', e);
     formData.append('password', p);
     axios.post(`${baseURL}/add-address`, formData).then((response) => {
-      console.log(response.data);
+
       alert('เพิ่มที่อยู่เรียบร้อยแล้ว');
       window.location.reload();
     });

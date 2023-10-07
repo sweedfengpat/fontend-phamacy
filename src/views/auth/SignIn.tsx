@@ -26,8 +26,11 @@ export default function SignIn() {
       let hash_password = localStorage.getItem("password");
       let email = atob(hash_email);
       let password = atob(hash_password);
+      if (hash_email && hash_password){
       setDataINput({email: email, password: password})
       setRemember(true);
+      }
+     
     }
   }, []);
 

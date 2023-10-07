@@ -53,10 +53,18 @@ import LongdoMap from "views/users/LongdoMap"
 import FollowShipping from "views/users/FollowShippin";
 import Forgot from "views/auth/forgot";
 import OrderID from "views/admin/OrderID/OrderID";
+import HomeProduct from "views/home/product";
 //import ForgotPassword from "views/admin/ForgotPassword.tsx";
 
 
 export const routes : RoutesType[] = [
+    {
+      name: "หน้าแรก",
+      layout: "/home",
+      path: "product",
+      icon: <MdHomeFilled className="h-6 w-6" />,
+      component: <HomeProduct />,
+    },
   {
     name: "หน้าแรก",
     layout: "/admin",

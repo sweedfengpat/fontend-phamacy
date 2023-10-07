@@ -52,7 +52,7 @@ function ChangePassword() {
     formData.append("newPassword", post_data.newPassword as string);
     formData.append("newPassword1", post_data.newPassword1 as string);
     formData.append("email", post_data.email as string);
-    console.log(post_data);
+
     if (
       post_data.password !== "" &&
       post_data.newPassword !== "" &&
@@ -70,7 +70,6 @@ function ChangePassword() {
       axios
         .post(`${baseURL}/users/change-password`, formData)
         .then((response: any) => {
-          console.log(response);
           if (response.data.code === 200) {
             alert("Password Changed Successfully!");
           } else if (response.data.code === 500) {

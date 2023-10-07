@@ -33,7 +33,7 @@ function Track() {
 
                   axios.post(`${baseURL}/track`, formData)
                   .then( (response: any) => {
-                    console.log(response);
+
                     if (response.data.code === 200){
                       alert("Email Sent!");
                       window.location.href = '/admin/shipping';

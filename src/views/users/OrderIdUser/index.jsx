@@ -103,7 +103,6 @@ function OrderIDUser() {
             t += total;
         }
         setTotal(t.toString());
-        console.log(new_rows)
         setRows(new_rows);
         
       }

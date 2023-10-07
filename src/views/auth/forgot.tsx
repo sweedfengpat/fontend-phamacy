@@ -16,51 +16,49 @@ import { baseURL } from 'lib/url';
 
 
 function Copyright(props: any) {
-    return (
-      <Typography variant="body2" color="text.secondary" align="center" {...props}>
-        {'Copyright © '}
-        <Link color="inherit" href="https://mui.com/">
-          Your Website
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
-  
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
 const theme = createTheme();
 
 
 function Forgot() {
 
-    const [alertError, setAlertError] = React.useState<number>(200);
+  const [alertError, setAlertError] = React.useState<number>(200);
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        const formData = new FormData();
-        formData.append('email', data.get('email') || '');
-          if (data.get('email') !== ''){
-            axios.post(`${baseURL}/forgot-password`, formData)
-            .then((response: any) => {
-              if (response.data.code === 500){
-                console.log(response.data);
-                setAlertError(500);
-              } else {
-                alert('Check your email for your password. If it doesn’t appear within a few minutes, check your spam folder.');
-                window.location.href = '/auth/sign-in';
-              }
-            });
-          } else {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const formData = new FormData();
+    formData.append('email', data.get('email') || '');
+    if (data.get('email') !== '') {
+      axios.post(`${baseURL}/forgot-password`, formData)
+        .then((response: any) => {
+          if (response.data.code === 500) {
+
             setAlertError(500);
+          } else {
+            alert('Check your email for your password. If it doesn’t appear within a few minutes, check your spam folder.');
+            window.location.href = '/auth/sign-in';
           }
-      };
+        });
+    } else {
+      setAlertError(500);
+    }
+  };
 
   return (
-<ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
+        <div className='mt-16 mb-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start'>
+          <Box
           sx={{
             marginTop: 8,
             display: 'flex',
@@ -75,12 +73,12 @@ function Forgot() {
             Forgot Password
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          { (() => {
-                if (alertError !== 200){
-                    return (<>
-                        <Alert severity="error" sx={{mb: '1rem'}}>Forgot Password Error!</Alert>
-                    </>)
-                } 
+            {(() => {
+              if (alertError !== 200) {
+                return (<>
+                  <Alert severity="error" sx={{ mb: '1rem' }}>Forgot Password Error!</Alert>
+                </>)
+              }
             })()}
             <TextField
               margin="normal"
@@ -109,9 +107,7 @@ function Forgot() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    </ThemeProvider>
+        </div>
   );
 }
 

@@ -4,21 +4,24 @@ import RtlLayout from "layouts/rtl";
 import AdminLayout from "layouts/admin";
 import AuthLayout from "layouts/auth";
 import UserLayout from "layouts/user";
+import HomeLayout from "layouts/home";
 import { useEffect, useState } from "react";
 import { AboutProvider } from "context/aboutContext";
 
 const App = () => {
 
   useEffect(() => {
-    const protocol = window.location.protocol;
-    const host = window.location.host;
-    const CheckURL = window.location.href === `${protocol}//${host}/auth/sign-in` || window.location.href === `${protocol}//${host}/auth/sign-up`;
+    const routepath = window.location.pathname;
     const CheckEmail = localStorage.getItem('email') === null;
     const CheckPassword = localStorage.getItem('password') === null;
+    const splitURL = routepath.split('/');
+    const pathLogin = splitURL[1] === 'admin' || splitURL[1] === 'users'
 
-    if (CheckEmail && CheckPassword && !CheckURL) {
+    if( pathLogin && CheckEmail && CheckPassword){
       window.location.href = '/auth/sign-in';
     }
+
+
     //tailwind set dark default theme
     document.body.classList.add("dark");
   }
@@ -29,8 +32,21 @@ const App = () => {
   //string to json
   // const userJson = {Token: 'Admin'};
   const userJson = JSON.parse(user);
+  const CheckEmail = localStorage.getItem('email') === null;
+    const CheckPassword = localStorage.getItem('password') === null;
 
-  const DefaultLayout = userJson?.token === "user" ? <Route path="/" element={<Navigate to="/users" replace />} /> : <Route path="/" element={<Navigate to="/admin" replace />} />;
+  const DefaultLayout = () => {
+    if(userJson?.token === "user" && !CheckEmail){
+      console.log('user');
+      return <Route path="/" element={<Navigate to="/users" replace />} />
+    } else if(userJson?.token === "admin"){
+      console.log('admin');
+      return <Route path="/" element={<Navigate to="/admin" replace />} />
+    }else{
+      console.log('home');
+      return <Route path="/" element={<Navigate to="/home" replace />} />
+    }
+  }
   return (
     <AboutProvider>
       <Routes>
@@ -38,7 +54,8 @@ const App = () => {
         <Route path="admin/*" element={<AdminLayout />} />
         <Route path="users/*" element={<UserLayout />} />
         <Route path="rtl/*" element={<RtlLayout />} />
-        {DefaultLayout}
+        <Route path="home/*" element={<HomeLayout />} />
+        {DefaultLayout()}
       </Routes>
     </AboutProvider>
   );

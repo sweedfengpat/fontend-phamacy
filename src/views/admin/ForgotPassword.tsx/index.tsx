@@ -30,7 +30,6 @@ function ForgotPassword() {
       axios.post(`${baseURL}/all-forgot`, formData).then((response: any) => {
         let new_rows:any = [];
         let data = JSON.parse(response.data);
-        console.log(data);
         data.forEach((item: any) => {
           new_rows.push(createData(item.id, item.email, item.password));
         })
@@ -55,7 +54,6 @@ function ForgotPassword() {
       formData.append('email', email);
       formData.append('password', password);
       axios.post(`${baseURL}/change-forgot`, formData).then((response: any) => {
-        console.log(response.data);
 
       });
         
@@ -65,7 +63,6 @@ function ForgotPassword() {
       const formData = new FormData();
       formData.append('id', id.toString());
       axios.post(`${baseURL}/delete-forgot`, formData).then((response: any) => {
-        console.log(response.data);
         window.location.reload();
       });
     }

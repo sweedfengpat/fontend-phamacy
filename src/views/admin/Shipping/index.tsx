@@ -50,7 +50,6 @@ function Shipping() {
 
 
     const handleChange = (id: number, event: any) => {
-        console.log(event.target.value);
         let r:any = [];
         rows.forEach((item: any) => {
             if (item.id === id) {

@@ -72,7 +72,6 @@ function Profile() {
         Address: data.get('address'),
         Token: "user",
       };
-      console.log(post_data);
       if (post_data.FirstName !== '' && post_data.LastName !== '' && post_data.Email !== '' && post_data.Password !== ''){
         axios.post(`${baseURL}/update-profile`, post_data)
         .then((response: any) => {

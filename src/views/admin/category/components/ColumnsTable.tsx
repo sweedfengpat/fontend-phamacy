@@ -80,7 +80,6 @@ function ColumnsTable(props: { tableData: any }) {
               placeholder="กรอกประเภทสินค้า"
               value={value}
               onChange={(e) => {
-                console.log(e.target.value);
                 setValue(e.target.value);
               }}
             />
@@ -103,7 +102,6 @@ function ColumnsTable(props: { tableData: any }) {
         <button className="linear mt-2 px-5 rounded-xl bg-brand-500 py-1 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
           onClick={e => {
             if(editID === info.getValue().toString()){
-              console.log("editID === info.getValue().toString()");
               handleSubmit();
             }else{
               setCanvisible(false);
@@ -153,7 +151,6 @@ function ColumnsTable(props: { tableData: any }) {
 
   const handleSubmit = () => {
     if (editID !== undefined && editID !== "") {
-      console.log("editID !== undefined && editID !== ''");
       const formData = new FormData();
       formData.append('name', value);
       formData.append('id', editID?.toString()!);

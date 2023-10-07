@@ -79,7 +79,7 @@ function OrderID() {
             setName(response.data.listName);
             setAddress(response.data.address);
             setStatus(response.data.status);
-console.log(response)
+
         });
         let new_rows:any = [];
         let listprice = price.split(",");

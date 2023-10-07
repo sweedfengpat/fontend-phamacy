@@ -33,7 +33,6 @@ function About() {
       setName(data.name);
       setLogo(data.logo);
       const splitAddress = data.address.split(" ");
-      console.log(splitAddress);
       setProvince(splitAddress[6]);
       setZipcode(splitAddress[7]);
       setSubdistrict(splitAddress[2]);
@@ -78,7 +77,6 @@ function About() {
   const handleFileChange = async (e) => {
     if (e.target.files) {
       setProductImage(e.target.files[0]);
-      console.log(e);
     }
   };
 
@@ -87,11 +85,9 @@ function About() {
       setProductImage(productImage);
       const formData = new FormData();
       formData.append("upload", productImage);
-      console.log(productImage);
       axios
         .post(`${baseURL}/add-about-image`, formData, {})
         .then((response) => {
-          console.log(response.data);
           window.location.href = "/admin/about";
         });
     }

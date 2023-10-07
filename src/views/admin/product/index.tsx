@@ -30,7 +30,7 @@ function AddProduct() {
           const formData = new FormData();
           formData.append('id', id?.toString()!);
           axios.post(`${baseURL}/get-product`, formData).then((response: any) => {
-              console.log("get-product", response.data);
+
               setInitData(response.data);
           }).catch((error) => {
               console.log(error);
@@ -43,7 +43,6 @@ function AddProduct() {
       axios.post(`${baseURL}/all-category`, formData).then((response: any) => {
           let new_rows: any = [];
           let data = JSON.parse(response.data);
-          console.log("all-category", data);
 
           setProductTypeList(data);
       });
@@ -95,7 +94,6 @@ function AddProduct() {
                   'Content-Type': 'multipart/form-data',
               },
           }).then((response: any) => {
-              console.log("add-product", response.data);
               if (response.data.code === 200) {
                   notification.success({
                       message: 'เพิ่มข้อมูลสำเร็จ',
