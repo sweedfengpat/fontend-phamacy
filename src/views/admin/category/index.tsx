@@ -20,6 +20,7 @@ const Tables = () => {
         let new_rows: any = [];
         let data = JSON.parse(response.data);
         setTableDataColumns(data);
+        console.log(data);
       });
     }
   }, []);

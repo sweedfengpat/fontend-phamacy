@@ -109,6 +109,7 @@ export default function SignUp() {
               placement: 'topRight',
               duration: 2,
             });
+            window.location.href = '/auth/sign-in';
             // PostAdders()
           }
         });

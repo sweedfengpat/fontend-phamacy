@@ -44,12 +44,12 @@ const ItemCart = (props: any) => {
   return (
             <TableRow key={id} className='!text-white'>
               <TableCell><img src={productImage} alt="" style={{width: "50px", height: "50px"}} /></TableCell>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" className='!text-white'>
                 {productName}
               </TableCell>
-              <TableCell align="center">{productPrice}</TableCell>
-              <TableCell align="center">{amount}</TableCell>
-              <TableCell align="center" id='total'>{total}</TableCell>
+              <TableCell align="center" className='!text-white'>{productPrice}</TableCell>
+              <TableCell align="center" className='!text-white'>{amount}</TableCell>
+              <TableCell align="center" id='total' className='!text-white'>{total}</TableCell>
             </TableRow>
   );
 

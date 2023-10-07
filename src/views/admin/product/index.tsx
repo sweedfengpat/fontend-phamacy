@@ -53,7 +53,9 @@ function AddProduct() {
 
       if (id) {
           const formData = new FormData();
-          if (productImage) formData.append('upload', productImage);
+          if (productImage){
+            formData.append('upload', productImage)
+          };
           formData.append('productType', initData.productType);
           formData.append('productName', initData.productName);
           formData.append('productPrice', initData.productPrice);
@@ -74,11 +76,24 @@ function AddProduct() {
                           'แก้ไขข้อมูลสำเร็จ',
                   });
                   setTimeout(() => {
-                      window.location.href = '/admin/product?id=' + id;
+                    //   window.location.href = '/admin/product?id=' + id;
                   }, 2000);
               } else if (response.data.code === 500) {
-                  setAlertError(500);
+                notification.error({
+                    message: 'เกิดข้อผิดพลาด',
+                    description:
+                        'Error 500' +
+                        response.data.message
+                });
+
               }
+          }).catch((error) => {
+            notification.error({
+                message: 'เกิดข้อผิดพลาด',
+                description:
+                    'Error 500' +
+                    error
+            });
           });
       }else{
           const formData = new FormData();
@@ -94,6 +109,7 @@ function AddProduct() {
                   'Content-Type': 'multipart/form-data',
               },
           }).then((response: any) => {
+            console.log(response.data);
               if (response.data.code === 200) {
                   notification.success({
                       message: 'เพิ่มข้อมูลสำเร็จ',
@@ -102,12 +118,11 @@ function AddProduct() {
                   });
                   //countdown 2 sec
                   setTimeout(() => {
-                      window.location.href = '/admin/product';
+                      window.location.href = 'admin/stockphama';
                   }, 3000);
 
                   // window.location.href = "/admin/product";
               } else if (response.data.code === 500) {
-                  setAlertError(500);
                   notification.error({
                       message: 'เกิดข้อผิดพลาด',
                       description:
@@ -161,7 +176,7 @@ function AddProduct() {
                                 <div className="flex flex-col">
                                     <label className="text-2xl font-bold">รหัสสินค้า</label>
                                     <input
-                                        className="w-96 h-10 pl-4 mt-2 border-2 dark:!text-[#000] rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                        className="w-96 h-10 pl-4 mt-2 border-2 dark:!text-[#fff] rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                                         placeholder="กรอกรหัสสินค้า"
                                         value={initData.productCode}
                                         onChange={(e) => setInitData({ ...initData, productCode: e.target.value })}
@@ -170,7 +185,7 @@ function AddProduct() {
                                 <div className="flex flex-col">
                                     <label className="text-2xl font-bold">ชื่อสินค้า</label>
                                     <input
-                                        className="w-96 h-10 pl-4 mt-2 border-2 dark:!text-[#000] rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                        className="w-96 h-10 pl-4 mt-2 border-2 dark:!text-[#fff] rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                                         placeholder="กรอกชื่อสินค้า"
                                         value={initData.productName}
                                         onChange={(e) => setInitData({ ...initData, productName: e.target.value })}
@@ -181,7 +196,7 @@ function AddProduct() {
                                 <div className="flex flex-col">
                                     <label className="text-2xl font-bold">ราคาสินค้า</label>
                                     <input
-                                        className="w-96 h-10 pl-4 mt-2 border-2 text-[#000] rounded-md dark:!text-[#000] shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                        className="w-96 h-10 pl-4 mt-2 border-2 text-[#000] rounded-md dark:!text-[#fff] shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                                         placeholder="กรอกราคาสินค้า"
                                         value={initData.productPrice}
                                         onChange={(e) => setInitData({ ...initData, productPrice: e.target.value })}
@@ -190,7 +205,7 @@ function AddProduct() {
                                 <div className="flex flex-col">
                                     <label className="text-2xl font-bold">จำนวนสินค้า</label>
                                     <input
-                                        className="w-96 h-10 pl-4 mt-2 border-2 rounded-md shadow-md dark:!text-[#000]  focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                        className="w-96 h-10 pl-4 mt-2 border-2 rounded-md shadow-md dark:!text-[#fff]  focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                                         placeholder="กรอกจำนวนสินค้า"
                                         value={initData.productAmount}
                                         onChange={(e) => setInitData({ ...initData, productAmount: e.target.value })}

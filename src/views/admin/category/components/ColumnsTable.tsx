@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import CardMenu from "components/card/CardMenu";
 import Card from "components/card";
 import { ExclamationCircleFilled } from '@ant-design/icons';
@@ -21,37 +21,20 @@ type RowObj = {
   id: number;
   name: string;
 };
+const { confirm } = Modal;
 
 function ColumnsTable(props: { tableData: any }) {
   const { tableData } = props;
+  let defaultData = tableData;
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [value, setValue] = React.useState<string>("");
+  const inputRef = useRef(null);
+  const [data, setData] = React.useState<RowObj[]>(defaultData);
+  const [editID, setEditID] = React.useState<string>();
+  const [canvisibled, setCanvisible] = React.useState<boolean>(false);
 
 
-  const { confirm } = Modal;
 
-  const deleteProduct2 = (id: number) => {
-    confirm({
-      title: 'คุณต้องการลบใช่ไหม',
-      icon: <ExclamationCircleFilled />,
-      content: 'เมื่อลบแล้วจะไม่สามารถกู้คืนได้',
-      onOk() {
-        const formData = new FormData();
-        formData.append('id', id.toString());
-        axios.post(`${baseURL}/delete-category`, formData).then((response: any) => {
-          window.location.reload();
-        });
-      },
-      onCancel() { },
-    });
-  };
-
-  const EditProduct = (id: number) => {
-    window.location.href = "/admin/category?id=" + id;
-  }
-
-
-  let defaultData = tableData;
   const columns = [
     columnHelper.accessor("id", {
       id: "id",
@@ -76,7 +59,7 @@ function ColumnsTable(props: { tableData: any }) {
         if (editID === row.original.id.toString()) {
           return (
             <input
-              className="w-96 h-10 pl-4 mt-2 border-2 dark:!text-[#000] rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="w-96 h-10 pl-4 mt-2 border-2 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               placeholder="กรอกประเภทสินค้า"
               value={value}
               onChange={(e) => {
@@ -101,9 +84,9 @@ function ColumnsTable(props: { tableData: any }) {
       cell: (info) => (
         <button className="linear mt-2 px-5 rounded-xl bg-brand-500 py-1 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
           onClick={e => {
-            if(editID === info.getValue().toString()){
+            if (editID === info.getValue().toString()) {
               handleSubmit();
-            }else{
+            } else {
               setCanvisible(false);
               setValue(info.row.original.name.toString());
               setEditID(info.getValue().toString());
@@ -129,10 +112,35 @@ function ColumnsTable(props: { tableData: any }) {
         </button>
       ),
     }),
-  ]; // eslint-disable-next-line
-  const [data, setData] = React.useState<RowObj[]>(defaultData);
-  const [editID, setEditID] = React.useState<string>();
-  const [canvisibled, setCanvisible] = React.useState<boolean>(false);
+  ];
+
+  const deleteProduct2 = (id: number) => {
+    confirm({
+      title: 'คุณต้องการลบใช่ไหม',
+      icon: <ExclamationCircleFilled />,
+      content: 'เมื่อลบแล้วจะไม่สามารถกู้คืนได้',
+      onOk() {
+        const formData = new FormData();
+        formData.append('id', id.toString());
+        axios.post(`${baseURL}/delete-category`, formData).then((response: any) => {
+          window.location.reload();
+        });
+      },
+      onCancel() { },
+    });
+  };
+
+  const EditProduct = (id: number) => {
+    window.location.href = "/admin/category?id=" + id;
+  }
+
+
+
+
+
+
+  // eslint-disable-next-line
+
   const table = useReactTable({
     data,
     columns,
@@ -171,7 +179,11 @@ function ColumnsTable(props: { tableData: any }) {
             window.location.reload();
           }, 2000);
         } else if (response.data.code === 500) {
-          setAlertError(500);
+          notification.error({
+            message: 'เกิดข้อผิดพลาด',
+            description:
+              'Error 500',
+          });
         }
       });
     } else {
@@ -196,7 +208,6 @@ function ColumnsTable(props: { tableData: any }) {
 
           // window.location.href = "/admin/product";
         } else if (response.data.code === 500) {
-          setAlertError(500);
           notification.error({
             message: 'เกิดข้อผิดพลาด',
             description:
@@ -239,7 +250,7 @@ function ColumnsTable(props: { tableData: any }) {
                 <div className="flex flex-col">
                   <label className="text-2xl font-bold">ชื่อประเภทสินค้า</label>
                   <input
-                    className="w-96 h-10 pl-4 mt-2 border-2 dark:!text-[#000] rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                    className="w-96 h-10 pl-4 mt-2 border-2 dark:!text-[#fff] rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     placeholder="กรอกรหัสสินค้า"
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
@@ -247,7 +258,7 @@ function ColumnsTable(props: { tableData: any }) {
                 </div>
                 <div className="flex flex-row justify-center mt-10 w-full">
                   <button
-                    className="px-6 py-2 text-lg font-bold text-white transition duration-300 ease-in-out bg-blue-600 rounded-full hover:bg-blue-700 focus:outline-none"
+                    className="px-6 py-2 text-lg font-bold dark:!text-[#fff] text-white transition duration-300 ease-in-out bg-blue-600 rounded-full hover:bg-blue-700 focus:outline-none"
                     onClick={() => handleSubmit()}
                   >
                     บันทึก
@@ -314,15 +325,9 @@ function ColumnsTable(props: { tableData: any }) {
           </tbody>
         </table>
       </div>
-      {/* 123 */}
-      <div ></div>
     </Card>
   );
 }
 
 export default ColumnsTable;
 const columnHelper = createColumnHelper<RowObj>();
-function setAlertError(arg0: number) {
-  throw new Error("Function not implemented.");
-}
-
