@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { baseURL, baseURLstatic } from 'lib/url';
 import {useLocation} from "react-router-dom"
+import Typography from '@mui/material/Typography';
 
 function createData(
     id: number,
@@ -106,6 +107,9 @@ function OrderID() {
     return (
       <div className='!text-white'>
           <div style={{textAlign: 'center'}}>
+          <Typography component="h1" variant="h5">
+            ใบสั่งซื้อ
+          </Typography>
               <div className='row' style={{textAlign: 'left'}}>
                 <div className='col-6'>
                     <h5>รหัสการสั่งซื้อ : {code}</h5>
@@ -151,7 +155,7 @@ function OrderID() {
                 </Table>
              </TableContainer>
              <div style={{textAlign: 'right', marginTop: '10px'}}>
-                <h4 style={{color: "#FFFFFF"}}>ราคารวม {total}</h4>
+                <h2 style={{color: "#FFFFFF"}}>ราคารวม {total}</h2>
              </div>
           </div>
       </div>

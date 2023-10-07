@@ -107,7 +107,7 @@ function AllPayment() {
              </TableContainer>
 
              <div style={{marginTop: '10px'}}>
-                <h2 style={{color: 'FFFFFF'}}>ราคารวม {total}</h2>
+                <h2 style={{color: 'FFFFFF'}}>ยอดรวม {total} บาท</h2>
              </div>
           </div>
       </div>
