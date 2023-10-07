@@ -93,6 +93,7 @@ const Navbar = (props: {
                     className="mt-3 text-lg font-medium text-red-500 hover:text-red-500"
                     onClick={() => {
                       window.location.href = "/";
+                      localStorage.removeItem("user");
                       localStorage.removeItem("email");
                       localStorage.removeItem("password");
                       
