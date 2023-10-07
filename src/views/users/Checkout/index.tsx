@@ -42,7 +42,7 @@ const ItemCart = (props: any) => {
   const [id] = React.useState<number>(props.id);
 
   return (
-            <TableRow key={id}>
+            <TableRow key={id} className='!text-white'>
               <TableCell><img src={productImage} alt="" style={{width: "50px", height: "50px"}} /></TableCell>
               <TableCell component="th" scope="row">
                 {productName}
