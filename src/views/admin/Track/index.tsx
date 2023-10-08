@@ -9,13 +9,12 @@ import { baseURL } from 'lib/url';
 
 function Track() {
 
-    let { id } = useParams();
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
 
     const [code, setCode] = React.useState<string>("");
     const [description, setDescription] = React.useState<string>("");
     const [company, setCompany] = React.useState<string>("");
-
-
 
   return (
     <div>
@@ -24,13 +23,13 @@ function Track() {
 
               <form onSubmit={ (e) => { 
                   e.preventDefault();
-                 let  id_int : number = parseInt(id as string);
+                 
                  const formData = new FormData();
                     formData.append('track', code);
                     formData.append('company', company);
                     formData.append('description', description);
-                    formData.append('id', id_int.toString());
-
+                    formData.append('id', id);
+                    console.log(id,'55555')
                   axios.post(`${baseURL}/track`, formData)
                   .then( (response: any) => {
 

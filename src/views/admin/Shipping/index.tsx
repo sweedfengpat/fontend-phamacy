@@ -116,7 +116,7 @@ function Shipping() {
                         <button className='btn btn-primary' onClick={() => change(row.id)}><AutorenewIcon /></button>
                         </TableCell>
                         <TableCell sx={{color: '#FFFFFF'}} align="center">
-                          {row.track === null ? <Link to={'/admin/Track'}><button className='btn btn-primary'><SendIcon /></button></Link> : <button className='btn btn-primary' disabled>ส่งข้อมูล</button>}
+                          {row.track === null ? <Link to={`/admin/Track?id=${row.id}`}><button className='btn btn-primary'><SendIcon /></button></Link> : <button className='btn btn-primary' disabled>ส่งข้อมูล</button>}
                         </TableCell>
 
                       </TableRow>
