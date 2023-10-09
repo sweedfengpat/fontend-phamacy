@@ -10,6 +10,9 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { baseURL } from "lib/url";
+import { notification } from "antd";
+import { TIMEOUT } from "dns";
+import { notEqual } from "assert";
 
 function Copyright(props: any) {
   return (
@@ -72,9 +75,19 @@ function ChangePassword() {
         .then((response: any) => {
 
           if (response.data.code === 200) {
-            alert("Password Changed Successfully!");
+            alert("Password Changed Successfully!")
+            notification.success({
+              message: "Password Changed Successfully!",
+              description: "Password Changed Successfully!",
+            });
+            setTimeout(() => {
+              window.location.href = "/user/profile";
+            }, 3000);
           } else if (response.data.code === 500) {
-            alert("Password is incorrect!");
+            notification.error({
+              message: "Password is incorrect!",
+              description: "Password is incorrect!",
+            });
           }
         });
     }
