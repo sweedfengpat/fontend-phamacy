@@ -75,13 +75,12 @@ function ChangePassword() {
         .then((response: any) => {
 
           if (response.data.code === 200) {
-            alert("Password Changed Successfully!")
             notification.success({
               message: "Password Changed Successfully!",
               description: "Password Changed Successfully!",
             });
             setTimeout(() => {
-              window.location.href = "/user/profile";
+              window.location.href = "/users/profile";
             }, 3000);
           } else if (response.data.code === 500) {
             notification.error({
