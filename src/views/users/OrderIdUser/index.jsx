@@ -115,7 +115,7 @@ function OrderIDUser() {
     return (
       <div className='!text-white'>
         <div style={{paddingTop: "1%", textAlign: "right"}}>
-        <Button sx={{borderRadius: '20px'}} variant="contained" color='success' onClick={handlePrint}><LocalPrintshopIcon /></Button>
+        {/* <Button sx={{borderRadius: '20px'}} variant="contained" color='success' onClick={handlePrint}><LocalPrintshopIcon /></Button> */}
           <div style={{textAlign: 'center', marginTop: '20px'}} ref={componentRef}>
           <Container>
 

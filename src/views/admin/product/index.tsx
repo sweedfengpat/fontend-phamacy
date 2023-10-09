@@ -55,7 +55,13 @@ function AddProduct() {
           const formData = new FormData();
           if (productImage){
             formData.append('upload', productImage)
-          };
+            formData.append('imageName',productImage.name);
+          }
+        //   else{
+        //     formData.append('upload', initData.productImage)
+        //   }
+        // console.log(productImage.name)
+          ;
           formData.append('productType', initData.productType);
           formData.append('productName', initData.productName);
           formData.append('productPrice', initData.productPrice);
@@ -63,7 +69,7 @@ function AddProduct() {
           formData.append('productCode', initData.productCode);
           formData.append('productAmount', initData.productAmount.toString());
           formData.append('id', id?.toString()!);
-          axios.post(`${baseURL}/update-product`, formData, {
+                   axios.post(`${baseURL}/update-product`, formData, {
               headers: {
                   'Content-Type': 'multipart/form-data',
               },
@@ -76,7 +82,7 @@ function AddProduct() {
                           'แก้ไขข้อมูลสำเร็จ',
                   });
                   setTimeout(() => {
-                      window.location.href = '/admin/product?id=' + id;
+                     window.location.href = '/admin/product?id=' + id;
                   }, 2000);
               } else if (response.data.code === 500) {
                 notification.error({

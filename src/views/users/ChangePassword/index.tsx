@@ -72,6 +72,7 @@ function ChangePassword() {
         .then((response: any) => {
           if (response.data.code === 200) {
             alert("Password Changed Successfully!");
+            window.location.href='/users/profile';
           } else if (response.data.code === 500) {
             alert("Password is incorrect!");
           }
