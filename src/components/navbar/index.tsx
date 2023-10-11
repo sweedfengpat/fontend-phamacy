@@ -21,94 +21,46 @@ const Navbar = (props: {
   const [darkmode, setDarkmode] = React.useState(false);
   const isLogin = localStorage.getItem("email") ? true : false;
 
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
+
   return (
-    <nav className="sticky top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#0b14374d]">
-      <div className="ml-[6px]">
-        <div className="h-6 w-[224px] pt-1">
-          <a
-            className="text-sm font-normal text-navy-700 hover:underline dark:text-white dark:hover:text-white"
-            href=" "
-          >
-            Pages
-            <span className="mx-1 text-sm text-navy-700 hover:text-navy-700 dark:text-white">
-              {" "}
-              /{" "}
-            </span>
-          </a>
-          <Link
-            className="text-sm font-normal capitalize text-navy-700 hover:underline dark:text-white dark:hover:text-white"
-            to="#"
-          >
-            {brandText}
-          </Link>
-        </div>
-        <p className="shrink text-[33px] capitalize text-navy-700 dark:text-white">
-          <Link
-            to="#"
-            className="font-bold capitalize hover:text-navy-700 dark:hover:text-white"
-          >
-            {brandText}
-          </Link>
-        </p>
+    <>
+    <nav className="pt-4 pb-4 top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#0b14374d]">
+      <div className="w-[600px] pt-1">
+        <a
+          className="text-6xl font-medium text-navy-700 dark:text-white dark:hover:text-white"
+          href=" "
+        >
+          ยินดีต้อนรับ {(user?.firstName? user.firstName : "") + " " + (user?.lastName? user.lastName : "")}
+        </a>
       </div>
 
-
       {isLogin ? (
-        <div className="relative mt-[3px] flex h-[61px]  flex-grow items-center justify-around gap-2 rounded-full bg-white px-2 py-2 shadow-xl shadow-shadow-500 dark:!bg-navy-800 dark:shadow-none md:flex-grow-0 md:gap-1 xl:gap-2">
-
+        <div className="relative mt-[3px] flex h-[40px]  flex-grow items-center justify-around gap-2 rounded-full bg-white px-2 py-2 shadow-xl shadow-shadow-500 dark:!bg-red-500 dark:shadow-none md:flex-grow-0 md:gap-1 xl:gap-2">
           <span
             className="flex cursor-pointer text-xl text-gray-600 dark:text-white xl:hidden"
             onClick={onOpenSidenav}
           >
             <FiAlignJustify className="h-5 w-5" />
           </span>
-          <Dropdown
-            button={
-              <img
-                className="h-10 w-10 rounded-full"
-                src={avatar}
-                alt="Elon Musk"
-              />
-            }
-            children={
-              <div className="flex h-48 w-56 flex-col justify-start rounded-[20px] bg-white bg-cover bg-no-repeat shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
-                <div className="mt-3 ml-4">
-                  <div className="flex items-center gap-2">
-                    <p className="text-sm font-bold text-navy-700 dark:text-white text-xl">
-                      👋 Hey, {atob(localStorage.getItem("email"))}
-                    </p>{" "}
-                  </div>
-                </div>
-                <div className="mt-3 h-px w-full bg-gray-200 dark:bg-white/20 " />
-
-                <div className="mt-3 ml-4 flex flex-col">
-                  {/* <a
-                 href="/admin/profile"
-                 className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
-               >
-                 Profile Settings
-               </a> */}
-                  <a
-                    href=" "
-                    className="mt-3 text-lg font-medium text-red-500 hover:text-red-500"
-                    onClick={() => {
-                      window.location.href = "/home/product";
-                      localStorage.removeItem("email");
-                      localStorage.removeItem("password");
-                      localStorage.removeItem("user");
-                    }}
-                  >
-                    Log Out
-                  </a>
-                </div>
-              </div>
-            }
-            classNames={"py-2 top-8 -left-[180px] w-max"}
-          />
+          <div className="m-2 ml-3 mr-3 flex flex-col">
+            <a
+              href=" "
+              className="text-lg font-medium text-white hover:text-white"
+              onClick={() => {
+                window.location.href = "/home/product";
+                localStorage.removeItem("email");
+                localStorage.removeItem("password");
+                localStorage.removeItem("user");
+              }}
+            >
+              Log Out
+            </a>
+          </div>
         </div>
       ) : (
         <div className="relative mt-[3px] flex h-[61px]  flex-grow items-center justify-around gap-2 rounded-full  px-2 py-2 dark:shadow-none md:flex-grow-0 md:gap-1 xl:gap-2">
-
           <span
             className="flex cursor-pointer text-xl text-gray-600 dark:text-white xl:hidden"
             onClick={onOpenSidenav}
@@ -116,10 +68,10 @@ const Navbar = (props: {
             <FiAlignJustify className="h-5 w-5" />
           </span>
           <div>
-            <button className="linear mt-2 px-5 rounded-xl bg-brand-500 py-1 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200">
+            <button className="linear mt-2 rounded-xl bg-brand-500 px-5 py-1 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200">
               <Link
                 to="/auth/sign-in"
-                className="text-sm font-medium text-white hover:text-brand-600 dark:text-white text-xl"
+                className="text-sm text-xl font-medium text-white hover:text-brand-600 dark:text-white"
               >
                 เข้าสู่ระบบ
               </Link>
@@ -127,7 +79,10 @@ const Navbar = (props: {
           </div>
         </div>
       )}
+      
     </nav>
+    <div className="flex-1 w-full h-0.5 bg-white"></div>
+    </>
   );
 };
 

@@ -117,7 +117,9 @@ export default function CheckOut() {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-    setDay(day + "/" + month + "/" + year);    
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    setDay(day + "/" + month + "/" + year + " " + "เวลา " + hour + ":"+ minute + "น.");   
 
   }, [email, password]);
 

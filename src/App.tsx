@@ -18,7 +18,7 @@ const App = () => {
     const pathLogin = splitURL[1] === 'admin' || splitURL[1] === 'users'
 
     if( pathLogin && CheckEmail && CheckPassword){
-      window.location.href = '/auth/sign-in';
+      window.location.href = '/';
     }
 
 

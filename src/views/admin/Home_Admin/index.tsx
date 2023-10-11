@@ -60,7 +60,6 @@ function Home() {
     productImage: string,
     ) => {
 
-
       if (localStorage.getItem("email") !== "" && localStorage.getItem("email") != null && localStorage.getItem("email") !== undefined) {
         let e :any = localStorage.getItem('email');
         let email = atob(e);
@@ -73,7 +72,6 @@ function Home() {
         formData.append('productTotal', productTotal.toString());
         formData.append('productImage', productImage);
         formData.append('productAmountData', productAmountData.toString());
-
         axios.post(`${baseURL}/add-cart`, formData).then((response: any) => {
           // window.location.reload();
         }
@@ -84,6 +82,25 @@ function Home() {
 
 
   const filterProduct = (e: any) => {
+    if(e.target.value == 'all'){
+      const formData = new FormData();
+    formData.append('id', "1");
+    axios.post(`${baseURL}/all-product`, formData).then((response: any) => {
+      let new_rows:any = [];
+      let listType:any = [];
+      let data = JSON.parse(response.data);
+      data.forEach((item: any) => {
+        new_rows.push(createData(item.id, item.productCode, item.productName, item.productDescription, item.productImage, item.productPrice, item.productAmount));
+        if (listType.indexOf(item.productType) === -1)
+          {
+            listType.push(item.productType);
+          }
+      })
+      setRows(new_rows);
+      setProductType(listType);
+    });
+    return
+    }
     const formData = new FormData();
     formData.append('id', "1");
     formData.append('productType', e.target.value);
@@ -104,7 +121,7 @@ function Home() {
         </div>
         <div className='mt-2' style={{width: '150px'}}>
             <select id="" className='form-control' onChange={(event)=> {filterProduct(event)}}>
-                <option value="">เลือกหมวดหมู่</option>
+                <option value="all" key= {"all-option"} >เลือกทั้งหมด</option>
                 {productType.map((item: any) => {
                     return (
                         <option value={item} key= {item + "option"}>{item}</option>
@@ -117,7 +134,7 @@ function Home() {
               return (
               <React.Fragment key={row.id + "product"}>
                 <Grid item xs={3}>
-                  <Card sx={{ maxWidth: 345 }} className='min-h-[600px] !bg-[#0B1437] !text-white border-2 border-white' >
+                  <Card sx={{ maxWidth: 345 , minWidth: 200 }} className='min-h-[600px] !bg-[#0B1437] !text-white border-2 border-white' >
                     <img src={baseURLstatic + "/" + row.productImage} className='max-h-[230px] w-full object-contain' alt="" />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">

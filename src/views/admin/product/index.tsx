@@ -124,7 +124,7 @@ function AddProduct() {
                   });
                   //countdown 2 sec
                   setTimeout(() => {
-                      window.location.href = 'admin/stockphama';
+                      window.location.href = '/admin/stockphama';
                   }, 3000);
 
                   // window.location.href = "/admin/product";

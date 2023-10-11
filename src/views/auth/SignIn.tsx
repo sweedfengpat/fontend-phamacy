@@ -39,6 +39,7 @@ export default function SignIn() {
       if (dataInput.email !== '' && dataInput.password !== ''){
         axios.post(`${baseURL}/sign-in`, dataInput)
         .then((response: any) => {
+          console.log(response.data)
           if (response.data.code === 500){
             setAlertError(500);
             notification.error({

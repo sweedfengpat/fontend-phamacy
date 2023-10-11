@@ -64,7 +64,7 @@ export default function User(props: { [x: string]: any }) {
       <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900 min-h-screen">
         {/* Main Content */}
         <main
-          className={`mx-[12px] h-full flex-none transition-all md:pe-2 xl:mr-[313px]`}
+          className={`mx-[12px] h-full flex-none transition-all md:pe-2`}
         >
           {/* Routes */}
           <div className="h-full ml-[20vw]">

@@ -60,6 +60,7 @@ function Address() {
     axios.post(`${baseURL}/all-address`, formData).then((response) => {
       let new_rows = [];
       let data = JSON.parse(response.data);
+      console.log(data)
       data.forEach((item) => {
         new_rows.push(createData(item.id, item.name, item.address));
       })

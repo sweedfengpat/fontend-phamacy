@@ -1,14 +1,47 @@
 /* eslint-disable */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import DashIcon from "components/icons/DashIcon";
+import axios from "axios";
+import { baseURL } from "lib/url";
 // chakra imports
 
 export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
   // Chakra color mode
   let location = useLocation();
 
+  const [order, setOrder] = useState(0);
+  const [orderPay, setOrderPay] = useState(0);
+
   const { routes } = props;
+
+  useEffect(() => {
+    document.title = "จัดการสินค้า";
+    const formData = new FormData();
+    formData.append('id', "1");
+    axios.post(`${baseURL}/all-order`, formData).then((response: any) => {
+      let new_rows:any = [];
+      let data = JSON.parse(response.data);
+      setOrder(data.length);
+
+    });
+    }
+  , []);
+
+  useEffect(() => {
+    document.title = "จัดการสินค้า";
+    const formData = new FormData();
+    formData.append('id', "1");
+    axios.post(`${baseURL}/all-order-pay-success`, formData).then((response: any) => {
+      let new_rows:any = [];
+      let data = JSON.parse(response.data);
+      data = data.filter((f: any) => f.status == 'ชำระแล้ว');
+
+      setOrderPay(data.length);
+    });
+    }
+  , []);
+  
 
   // verifies if routeName is the one active (in browser input)
   const activeRoute = (routeName: string) => {
@@ -23,9 +56,12 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
     if(UserRole !== null && UserRole !== undefined && UserRole === "user"){
       // return;
       routes = UserRoute;
-    }else{
+    }else if (UserRole !== null && UserRole !== undefined && UserRole === "admin"){
       const adminRoute = routes.filter((route) => route.layout === "/admin");
       routes = adminRoute
+    }
+    else {
+      return;
     }
     routes = routes.filter((route) => route?.showSidebar !== false);
     return routes.map((route, index) => {
@@ -64,6 +100,25 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
               {activeRoute(route.path) ? (
                 <div className="absolute right-0 top-px h-9 w-1 rounded-lg bg-brand-500 dark:bg-brand-400" />
               ) : null}
+
+              {
+                route.name == "ตรวจสอบการสั่งซื้อ" && order > 0 ? (
+                  <div className="w-6 h-6 mt-0.5 bg-red-500" style={{ borderRadius: 32 }}>
+                    <p className="ml-2 absolute text-justify">
+                      {order}
+                    </p>
+                  </div>
+                ) : null
+              }
+              {
+                route.name == "ตรวจสอบการส่งสินค้า" && orderPay > 0 ? (
+                  <div className="w-6 h-6 mt-0.5 bg-red-500" style={{ borderRadius: 32 }}>
+                    <p className="ml-2.5 absolute text-justify">
+                      {orderPay}
+                    </p>
+                  </div>
+                ) : null
+              }
             </div>
           </Link>
         );

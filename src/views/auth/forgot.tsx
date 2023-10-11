@@ -76,7 +76,7 @@ function Forgot() {
             {(() => {
               if (alertError !== 200) {
                 return (<>
-                  <Alert severity="error" sx={{ mb: '1rem' }}>Forgot Password Error!</Alert>
+                  <Alert severity="error" sx={{ mb: '1rem' }}>Email not found</Alert>
                 </>)
               }
             })()}

@@ -85,8 +85,7 @@ function OrderIDUser() {
             setName(response.data.listName);
             setAddress(response.data.address);
             setStatus(response.data.status);
-
-        });
+      });
         let new_rows = [];
         let listprice = price?.split(",");
         let listamount = amount?.split(",");

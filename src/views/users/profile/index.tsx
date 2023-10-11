@@ -114,12 +114,14 @@ function Profile() {
                     </>)
                 }
             })()}
-            <Grid container spacing={2}>
+            <Grid container spacing={3}>
+              
               <Grid item xs={12} >
-                <TextField
+              <div className="cto-InputAddress1">
+                <TextField 
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  autoComplete="given-name"
+                  autoComplete="off"
                   name="firstName"
                   required
                   fullWidth
@@ -127,8 +129,10 @@ function Profile() {
                   label="First Name"
                   autoFocus
                 />
+                </div>
               </Grid>
               <Grid item xs={12} >
+              <div className="cto-InputAddress1">
                 <TextField
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
@@ -137,10 +141,12 @@ function Profile() {
                   id="lastName"
                   label="Last Name"
                   name="lastName"
-                  autoComplete="family-name"
+                  autoComplete="off"
                 />
+                </div>
               </Grid>
               <Grid item xs={12}>
+              <div className="cto-InputAddress1">
                 <TextField
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -149,10 +155,12 @@ function Profile() {
                   id="email"
                   label="Email Address"
                   name="email"
-                  autoComplete="email"
+                  autoComplete="off"
                 />
+                </div>
               </Grid>
               <Grid item xs={12}>
+              <div className="cto-InputAddress1">
                 <TextField
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -162,9 +170,10 @@ function Profile() {
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
+                  autoComplete="new-passworrd"
                   hidden
                 />
+                </div>
               </Grid>
               {/* <Grid item xs={12}>
               <TextField
@@ -192,7 +201,7 @@ function Profile() {
             >
               Update
             </Button>
-            <Button
+            {/* <Button
               type="submit"
               fullWidth
               variant="contained"
@@ -200,7 +209,7 @@ function Profile() {
               href="/users/change-password"
             >
               Change Password
-            </Button>
+            </Button> */}
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />

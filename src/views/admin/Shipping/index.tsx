@@ -109,8 +109,13 @@ function Shipping() {
                         <TableCell sx={{color: '#FFFFFF'}} align="center">{index + 1}</TableCell>
                         <TableCell sx={{color: '#FFFFFF'}}><Link to={`/admin/order-id?id=${row.id}`}><SearchIcon color='success'></SearchIcon></Link>{row.code}</TableCell>
                         <TableCell sx={{color: '#FFFFFF'}} align="center">{row.date}</TableCell>
-                        <TableCell sx={{color: '#FFFFFF'}} align="center">
-                        <input type="text" className='form-control' value={row.status} onChange={(event) => handleChange(row.id, event)} />
+                        <TableCell style={{width: '30%', marginBottom: '10px', height: '30px', color: '#000000'}} sx={{color: '#FFFFFF'}} align="center">
+                        {/* <input type="text" className='form-control' value={row.status} onChange={(event) => handleChange(row.id, event)} /> */}
+                        
+                          <select className='form-control' defaultValue={row.status} onChange={(event) => handleChange(row.id, event)}>
+                              <option value="ชำระแล้ว">ชำระแล้ว</option>
+                              <option value="จัดส่งแล้ว">จัดส่งแล้ว</option>
+                          </select>
                         </TableCell>
                         <TableCell sx={{color: '#FFFFFF'}} align="center">
                         <button className='btn btn-primary' onClick={() => change(row.id)}><AutorenewIcon /></button>
