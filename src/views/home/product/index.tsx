@@ -145,7 +145,9 @@ function Home() {
                       </Typography>
                     </CardContent>
                     <CardActions disableSpacing>
-                      <IconButton aria-label="add to cart" sx={{marginRight: '1rem'}} onClick={() => {addCart(row.id, row.productName, 1, row.productAmount, row.productPrice, row.productPrice, row.productImage)}}>
+                      <IconButton aria-label="add to cart" sx={{marginRight: '1rem'}} onClick={() => {
+                        window.location.href = "/auth/sign-in";
+                      }}>
                         <AddShoppingCartIcon color='primary'/>
                       </IconButton>
                       <Typography variant="h5" color="primary">
