@@ -45,6 +45,7 @@ function Track() {
                     console.log(error);
                   });
                 } }>
+                  <div className="cto-InputAddress1">
               <TextField
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
@@ -54,8 +55,10 @@ function Track() {
                   label="บริษัทขนส่ง"
                   name="company"
                   autoComplete="company"
-                />
+                /></div>
                 <br /> <br />
+
+                <div className="cto-InputAddress1">
                 <TextField
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
@@ -65,8 +68,10 @@ function Track() {
                   label="รหัสพัสดุ"
                   name="code"
                   autoComplete="code"
-                />
+                /></div>
                 <br /> <br />
+
+                <div className="cto-InputAddress1">
                 <TextareaAutosize
                 maxRows={4}
                 aria-label="maximum height"
@@ -75,7 +80,7 @@ function Track() {
                 name='description'
                 onChange={(e) => setDescription(e.target.value)}
                 style={{width: '100%', height: '5rem'}}
-                />
+                /></div>
                 <br />
                 <br />
                 

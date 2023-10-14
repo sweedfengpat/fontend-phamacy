@@ -82,7 +82,10 @@ function Profile() {
               let hash_password = btoa(p);
               localStorage.setItem("email", hash_email);
               localStorage.setItem("password", hash_password);
-                window.location.href = "/users/profile";
+              console.log(response.data)
+              console.log(response)
+              localStorage.setItem("user", JSON.stringify(response.data));
+               window.location.href = "/users/profile";
             }
         });
       } else {

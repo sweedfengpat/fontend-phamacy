@@ -80,6 +80,7 @@ function Forgot() {
                 </>)
               }
             })()}
+            <div className="cto-InputAddress1">
             <TextField
               margin="normal"
               required
@@ -90,6 +91,7 @@ function Forgot() {
               autoComplete="email"
               autoFocus
             />
+            </div>
             <Button
               type="submit"
               fullWidth

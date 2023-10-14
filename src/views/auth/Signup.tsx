@@ -139,8 +139,8 @@ export default function SignUp() {
         <div className="grid grid-cols-2 gap-5">
 
           {/* ชื่อ */}
+          <div className="cto-InputAddress1">
           <InputField
-
             variant="auth"
             extra="mb-3"
             label="ชื่อ*"
@@ -149,9 +149,10 @@ export default function SignUp() {
             type="text"
             value={dataInput.fristname}
             onChange={(e: any) => setDataINput({ ...dataInput, fristname: e.target.value })}
-          />
+          /></div>
 
           {/* นามสกุล */}
+          <div className="cto-InputAddress1">
           <InputField
             variant="auth"
             extra="mb-3"
@@ -161,8 +162,10 @@ export default function SignUp() {
             type="text"
             value={dataInput.lastname}
             onChange={(e: any) => setDataINput({ ...dataInput, lastname: e.target.value })}
-          />
+          /></div>
+
           {/* Email */}
+          <div className="cto-InputAddress1">
           <InputField
             variant="auth"
             extra="mb-3"
@@ -172,9 +175,11 @@ export default function SignUp() {
             type="text"
             value={dataInput.email}
             onChange={(e: any) => setDataINput({ ...dataInput, email: e.target.value })}
-          />
+          /></div>
+
           {/* Password */}
-          <InputField
+          <div className="cto-InputAddress1">
+            <InputField
             variant="auth"
             extra="mb-3"
             label="Password*"
@@ -183,7 +188,7 @@ export default function SignUp() {
             type="password"
             value={dataInput.password}
             onChange={(e: any) => setDataINput({ ...dataInput, password: e.target.value })}
-          />
+          /></div>
           
         </div>
         <button

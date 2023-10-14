@@ -82,6 +82,7 @@ export default function SignIn() {
           กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบ
         </p>
         {/* Email */}
+        <div className="cto-InputAddress1">
         <InputField
           variant="auth"
           extra="mb-3"
@@ -91,9 +92,10 @@ export default function SignIn() {
           type="text"
           value = {dataInput.email}
           onChange={(e:any) => setDataINput({ ...dataInput, email: e.target.value })}
-        />
+        /></div>
 
         {/* Password */}
+        <div className="cto-InputAddress1">
         <InputField
           variant="auth"
           extra="mb-3"
@@ -103,7 +105,8 @@ export default function SignIn() {
           type="password"
           value = {dataInput.password}
           onChange={(e:any) => setDataINput({ ...dataInput, password: e.target.value })}
-        />
+        /></div>
+        
         {/* Checkbox */}
         <div className="mb-4 flex items-center justify-between px-2">
           <div className="flex items-center">

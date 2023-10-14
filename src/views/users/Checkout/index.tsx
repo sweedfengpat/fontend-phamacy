@@ -166,6 +166,7 @@ export default function CheckOut() {
     </div>
     <div style={{marginTop: '10px'}}>
             <h1>ที่อยู่จัดส่ง</h1>
+            <div className="cto-InputAddress1">
             <TextField
             id="outlined-multiline-static"
             multiline
@@ -177,7 +178,7 @@ export default function CheckOut() {
               style: {color: '#FFFFFF', border: '2px', borderColor: '#FFFFFF'},
            }}
             value={address}
-            onChange={(e) => setAddress(e.target.value)} />
+            onChange={(e) => setAddress(e.target.value)} /></div>
             <Button variant="contained" onClick={() => {setAddress('')}}>Clear</Button>
     </div>
 
@@ -209,6 +210,7 @@ export default function CheckOut() {
       let listAmountString = listAmount.toString();
       let listImageString = listImage.toString();
       let listIdString = listId.toString();
+      const user = JSON.parse(localStorage.getItem("user"));
       formData.append('listName', listNameString);
       formData.append('listPrice', listPriceString);
       formData.append('listAmount', listAmountString);
@@ -219,9 +221,11 @@ export default function CheckOut() {
       formData.append('total', total.toString());
       formData.append('day', day);
       formData.append('productImage', slipImage!);
+      formData.append('firstName',user.firstName);
+      formData.append('lastName',user.lastName);
       axios.post(`${baseURL}/add-order`, formData).then((response: any) => {
           alert('สั่งซื้อสำเร็จ');
-          // window.location.href = '/users/cart';
+          window.location.href = '/users/cart';
       });
     }}>สั่งซื้อ</Button>
     </div>
