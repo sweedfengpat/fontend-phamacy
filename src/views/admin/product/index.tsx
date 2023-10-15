@@ -235,10 +235,10 @@ function AddProduct() {
 
                                 </div>
                             </div>
-                            <div className="flex flex-col">
+                            <div className="flex flex-col text-white">
                                 <label className="text-2xl font-bold">รายละเอียดสินค้า</label>
                                 <textarea
-                                    className="w-96 h-40 pl-4 mt-2 border-2 dark:!text-[#000] rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                    className="w-96 h-40 pl-4 mt-2 border-2 dark:!bg-[transparent] dark:!text-white rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                                     placeholder="กรอกรายละเอียดสินค้า"
                                     value={initData.productDescription}
                                     onChange={(e) => setInitData({ ...initData, productDescription: e.target.value })}

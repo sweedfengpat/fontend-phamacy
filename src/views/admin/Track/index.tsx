@@ -71,7 +71,7 @@ function Track() {
                 /></div>
                 <br /> <br />
 
-                <div className="cto-InputAddress1">
+                <div className="cto-InputDetail">
                 <TextareaAutosize
                 maxRows={4}
                 aria-label="maximum height"

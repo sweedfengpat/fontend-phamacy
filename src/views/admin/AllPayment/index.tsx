@@ -79,7 +79,7 @@ function AllPayment() {
               <h1>ยอดขายรายเดือน</h1>
               {/* month and year FilledInput */} 
               
-              <input type="month" id="bdaymonth" name="bdaymonth" value={month} onChange={(e) => setMonth(e.target.value)} />
+              <input type="month" id="bdaymonth" name="bdaymonth" className='' value={month} onChange={(e) => setMonth(e.target.value)} />
               
               <TableContainer component={Paper} sx={{ marginTop: '10px' , bgcolor:'#1b2559'}}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
