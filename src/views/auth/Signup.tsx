@@ -60,31 +60,6 @@ export default function SignUp() {
     }
   }
 
-  // const PostAdders = () => {
-    
-  //   axios.post(`${baseURL}/add-address`, { address: dataInput.address,name: dataInput.fristname, email: dataInput.email, password: dataInput.password })
-  //     .then((response: any) => {
-
-  //       if (response.data.code === 500) {
-  //         setAlertError(500);
-  //         notification.error({
-  //           message: 'เกิดข้อผิดพลาด',
-  //           description: 'ไม่สามารถสมัครสมาชิกได้',
-  //           placement: 'topRight',
-  //           duration: 2,
-  //         });
-  //       } else if (response.data.code === 200) {
-      
-  //         notification.success({
-  //           message: 'สำเร็จ',
-  //           description: 'สมัครสมาชิกสำเร็จ',
-  //           placement: 'topRight',
-  //           duration: 2,
-  //         });
-  //         window.location.href = '/auth/sign-in';
-  //       }
-  //     });
-  // }
 
   const handleSubmit = () => {
 
@@ -139,7 +114,7 @@ export default function SignUp() {
         <div className="grid grid-cols-2 gap-5">
 
           {/* ชื่อ */}
-          <div className="cto-InputAddress1">
+          <div className="cto-InputCommon">
           <InputField
             variant="auth"
             extra="mb-3"
@@ -152,7 +127,7 @@ export default function SignUp() {
           /></div>
 
           {/* นามสกุล */}
-          <div className="cto-InputAddress1">
+          <div className="cto-InputCommon">
           <InputField
             variant="auth"
             extra="mb-3"
@@ -165,7 +140,7 @@ export default function SignUp() {
           /></div>
 
           {/* Email */}
-          <div className="cto-InputAddress1">
+          <div className="cto-InputCommon">
           <InputField
             variant="auth"
             extra="mb-3"
@@ -178,7 +153,7 @@ export default function SignUp() {
           /></div>
 
           {/* Password */}
-          <div className="cto-InputAddress1">
+          <div className="cto-InputCommon">
             <InputField
             variant="auth"
             extra="mb-3"

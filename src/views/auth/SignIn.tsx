@@ -82,7 +82,7 @@ export default function SignIn() {
           กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบ
         </p>
         {/* Email */}
-        <div className="cto-InputAddress1">
+        <div className="cto-InputCommon">
         <InputField
           variant="auth"
           extra="mb-3"
@@ -95,7 +95,7 @@ export default function SignIn() {
         /></div>
 
         {/* Password */}
-        <div className="cto-InputAddress1">
+        <div className="cto-InputCommon">
         <InputField
           variant="auth"
           extra="mb-3"
