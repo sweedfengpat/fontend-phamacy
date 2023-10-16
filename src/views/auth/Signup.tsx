@@ -8,7 +8,7 @@ import { notification } from 'antd';
 
 interface Data {
   email: string;
-  fristname?: string;
+  firstname?: string;
   lastname?: string;
   password: string;
 }
@@ -20,7 +20,7 @@ export default function SignUp() {
   const [dataInput, setDataINput] = React.useState<Data>({
     email: "",
     password: "",
-    fristname: "",
+    firstname: "",
     lastname: "",
   });
 
@@ -41,7 +41,7 @@ export default function SignUp() {
         duration: 2,
       });
       return false;
-    } else if (dataInput.fristname === '') {
+    } else if (dataInput.firstname === '') {
       notification.error({
         message: 'เกิดข้อผิดพลาด',
         description: 'กรุณากรอกชื่อ',
@@ -120,10 +120,10 @@ export default function SignUp() {
             extra="mb-3"
             label="ชื่อ*"
             placeholder="ชื่อ"
-            id="fristname"
+            id="firstname"
             type="text"
-            value={dataInput.fristname}
-            onChange={(e: any) => setDataINput({ ...dataInput, fristname: e.target.value })}
+            value={dataInput.firstname}
+            onChange={(e: any) => setDataINput({ ...dataInput, firstname: e.target.value })}
           /></div>
 
           {/* นามสกุล */}

@@ -8,6 +8,8 @@ import HomeLayout from "layouts/home";
 import { useEffect, useState } from "react";
 import { AboutProvider } from "context/aboutContext";
 
+import { Modal } from "antd";
+
 const App = () => {
 
   useEffect(() => {

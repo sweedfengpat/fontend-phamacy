@@ -59,6 +59,7 @@ function ColumnsTable(props: { tableData: any }) {
         if (editID === row.original.id.toString()) {
           return (
             <input
+              autoFocus={true}
               className="w-96 h-10 pl-4 mt-2 border-2 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
               placeholder="กรอกประเภทสินค้า"
               value={value}
@@ -119,6 +120,11 @@ function ColumnsTable(props: { tableData: any }) {
       title: 'คุณต้องการลบใช่ไหม',
       icon: <ExclamationCircleFilled />,
       content: 'เมื่อลบแล้วจะไม่สามารถกู้คืนได้',
+      okButtonProps: {
+        style: {
+          backgroundColor: 'red'
+        }
+      },
       onOk() {
         const formData = new FormData();
         formData.append('id', id.toString());
@@ -250,10 +256,13 @@ function ColumnsTable(props: { tableData: any }) {
                 <div className="flex flex-col">
                   <label className="text-2xl font-bold">ชื่อประเภทสินค้า</label>
                   <input
+                    key={'product-code'}
                     className="w-96 h-10 pl-4 mt-2 border-2 dark:!text-[#fff] rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     placeholder="กรอกรหัสสินค้า"
                     value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    onChange={(e) => {
+                      setValue(e.target.value)
+                    }}
                   />
                 </div>
                 <div className="flex flex-row justify-center mt-10 w-full">

@@ -39,6 +39,11 @@ function ColumnsTable(props: { tableData: any }) {
       title: 'คุณต้องการลบใช่ไหม',
       icon: <ExclamationCircleFilled />,
       content: 'เมื่อลบแล้วจะไม่สามารถกู้คืนได้',
+      okButtonProps: {
+        style: {
+          backgroundColor: 'red'
+        }
+      },
       onOk() {
         const formData = new FormData();
         formData.append('id', id.toString());
