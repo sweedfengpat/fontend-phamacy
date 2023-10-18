@@ -219,7 +219,7 @@ export default function Cart() {
                   </Button>
                 </TableCell>
                 <TableCell sx={{color: '#FFFFFF'}} align="center" id="total">
-                  {total}
+                  {row.productPrice * row.productAmount}
                 </TableCell>
                 <TableCell align="center">
                   <Button
@@ -246,7 +246,7 @@ export default function Cart() {
 
           <div style={{ width: "50%", display: "flex" }}>
             <div>
-              <h1 style={{ textAlign: "center" }}>ราคารวม {total} บาท</h1>
+              <h1 style={{ textAlign: "center" }}>ราคารวมทั้งหมด {total} บาท</h1>
             </div>
           </div>
 

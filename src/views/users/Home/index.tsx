@@ -73,7 +73,7 @@ function Home() {
         formData.append('productImage', productImage);
         formData.append('productAmountData', productAmountData.toString());
         axios.post(`${baseURL}/add-cart`, formData).then((response: any) => {
-          // window.location.reload();
+          window.location.reload();
         }
       );
 

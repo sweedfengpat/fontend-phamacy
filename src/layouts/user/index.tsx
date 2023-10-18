@@ -81,6 +81,7 @@ export default function User(props: { [x: string]: any }) {
                 <Route
                   path="/"
                   element={<Navigate to="/users/home" replace />}
+                  
                 />
               </Routes>
             </div>

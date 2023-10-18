@@ -152,7 +152,7 @@ export default function CheckOut() {
     </TableContainer>
     <div>
     <div style={{marginTop: '10px'}}>
-            <h1>ราคารวม {total} บาท</h1>
+            <h1>ราคารวมทั้งหมด {total} บาท</h1>
     </div>
     <hr />
     <div style={{marginTop: '10px'}}>

@@ -13,6 +13,8 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
   const [order, setOrder] = useState(0);
   const [orderPay, setOrderPay] = useState(0);
 
+  const [cart, setCart] = useState(0);
+
   const { routes } = props;
 
   useEffect(() => {
@@ -41,7 +43,25 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
     });
     }
   , []);
+
+  useEffect(() => {
+    getCart();
+  }
+  , []);
+
+  useEffect(() => {
+    console.log("Action")
+  }, [props.routes])
   
+  const getCart = async () => {
+    let e: any = localStorage.getItem("email");
+    const formData = new FormData();
+    formData.append("email", atob(e));
+    axios.post(`${baseURL}/get-cart`, formData).then((response: any) => {
+      let data = JSON.parse(response.data);
+      setCart(data.length);
+    })
+  }
 
   // verifies if routeName is the one active (in browser input)
   const activeRoute = (routeName: string) => {
@@ -115,6 +135,15 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
                   <div className="w-6 h-6 mt-0.5 bg-red-500" style={{ borderRadius: 32 }}>
                     <p className="ml-2.5 absolute text-justify">
                       {orderPay}
+                    </p>
+                  </div>
+                ) : null
+              }
+              {
+                route.name == "ตระกร้า" && cart > 0 ? (
+                  <div className="w-6 h-6 mt-0.5 bg-red-500" style={{ borderRadius: 32 }}>
+                    <p className="ml-2.5 absolute text-justify">
+                      {cart}
                     </p>
                   </div>
                 ) : null
