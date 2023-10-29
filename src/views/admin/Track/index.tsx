@@ -35,7 +35,7 @@ function Track() {
 
                     if (response.data.code === 200){
                       alert("Email Sent!");
-                      window.location.href = '/admin/shipping';
+                      // window.location.href = '/admin/shipping';
       
                     } else if (response.data.code === 500) {
                       alert('เกิดข้อผิดพลาด');
