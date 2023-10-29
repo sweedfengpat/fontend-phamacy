@@ -130,7 +130,7 @@ function OrderID() {
                   <TableHead>
                     <TableRow>
                       <TableCell sx={{ color: "#FFFFFF" }}>ลำดับ</TableCell>
-                      <TableCell sx={{ color: "#FFFFFF" }} align="center">สินค้า</TableCell>
+                      <TableCell sx={{ color: "#FFFFFF" }} align="left">ชื่อสินค้า</TableCell>
                       <TableCell sx={{ color: "#FFFFFF" }} align="center">ราคา</TableCell>
                       <TableCell sx={{ color: "#FFFFFF" }} align="center">จำนวน</TableCell>
                         <TableCell sx={{ color: "#FFFFFF" }} align="center">รวม</TableCell>
@@ -143,7 +143,7 @@ function OrderID() {
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                       >
                         <TableCell sx={{ color: "#FFFFFF" }} align="left">{index + 1}</TableCell>
-                        <TableCell sx={{ color: "#FFFFFF" }} align="center">{row.name}</TableCell>
+                        <TableCell sx={{ color: "#FFFFFF" }} align="left" width={"40%"}>{row.code}</TableCell>
                         <TableCell sx={{ color: "#FFFFFF" }} align="center">{row.price}</TableCell>
                         <TableCell sx={{ color: "#FFFFFF" }} align="center">{row.amount}</TableCell>
                         <TableCell sx={{ color: "#FFFFFF" }} align="center">{row.total}</TableCell>
